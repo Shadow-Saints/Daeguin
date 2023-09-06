@@ -16,13 +16,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _DashSpeed;
     [SerializeField] private float _dashingCooldown;
     [SerializeField] private float _RunSpeed;
-    
+    private float _currentSpeed;
+
+
     private bool canDash = true;
     private bool isDashing = false;
     private bool isRunning = false;
 
-    [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private Rigidbody2D _rig;
     [SerializeField] private TrailRenderer _tr;
+
+
+    private void Start()
+    {
+        _rig = GetComponent<Rigidbody2D>();
+        _anim = GetComponent<Animator>();
+        _renderer = GetComponent<SpriteRenderer>();
+    }
 
     private void Update()
     {
@@ -34,28 +44,24 @@ public class PlayerController : MonoBehaviour
             return;
         }
         
-        float currentSpeed = isDashing ? _DashSpeed : _Speed;
+         _currentSpeed = isDashing ? _DashSpeed : _Speed;
         
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            currentSpeed = _RunSpeed;
+            _currentSpeed = _RunSpeed;
             isRunning = true;
         }
         else
         {
             isRunning = false;
         }
-        
-        _rb.velocity = new Vector2(horizontal * currentSpeed, vertical * currentSpeed);
-        _anim = GetComponent<Animator>(); // Anexando o componente Animator
-        _renderer = GetComponent<SpriteRenderer>(); // Anexando o componente SpriteRenderer
     }
 
     private void FixedUpdate()
     {
         if (isDashing)
         {
-            _rb.velocity = _rb.velocity.normalized * _DashSpeed;
+            _rig.velocity = _rig.velocity.normalized * _DashSpeed;
         }
     }
 
@@ -70,7 +76,7 @@ public class PlayerController : MonoBehaviour
     private void StopDash()
     {
         isDashing = false;
-        _rb.velocity = Vector2.zero;
+        _rig.velocity = Vector2.zero;
         _tr.emitting = false;
     }
 
@@ -79,7 +85,7 @@ public class PlayerController : MonoBehaviour
         canDash = false;
         isDashing = true;
         _tr.emitting = true;
-        _rb.velocity = direction * _DashSpeed;
+        _rig.velocity = direction * _DashSpeed;
         yield return new WaitForSeconds(_dashingCooldown);
         StopDash();
         yield return new WaitForSeconds(0.2f);
@@ -108,27 +114,6 @@ public class PlayerController : MonoBehaviour
             {
                 dashDirection = Vector2.left;
             }
-            
-        if (Input.GetAxisRaw("Vertical") == 1) 
-        {
-            _anim.SetFloat("Dir", 1);
-            _renderer.flipX = false;
-        }
-        else if(Input.GetAxisRaw("Vertical") == -1) 
-        {
-            _anim.SetFloat("Dir", 0);
-            _renderer.flipX = false;
-        }
-        else if (Input.GetAxisRaw("Horizontal") == 1) 
-        {
-            _anim.SetFloat("Dir", 2);
-            _renderer.flipX = false;
-        }
-        else if (Input.GetAxisRaw("Horizontal") == -1)
-        {
-            _anim.SetFloat("Dir", 2);
-            _renderer.flipX = true;
-        }
 
             if (dashDirection != Vector2.zero)
             {
@@ -143,7 +128,28 @@ public class PlayerController : MonoBehaviour
         {
             horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");
-            _rb.velocity = new Vector3(horizontal * _Speed, vertical * _Speed, 0);
+            _rig.velocity = new Vector3(horizontal * _currentSpeed, vertical * _currentSpeed, 0);
+        }
+
+        if (Input.GetAxisRaw("Vertical") == 1)
+        {
+            _anim.SetFloat("Dir", 1);
+            _renderer.flipX = false;
+        }
+        else if (Input.GetAxisRaw("Vertical") == -1)
+        {
+            _anim.SetFloat("Dir", 0);
+            _renderer.flipX = false;
+        }
+        else if (Input.GetAxisRaw("Horizontal") == 1)
+        {
+            _anim.SetFloat("Dir", 2);
+            _renderer.flipX = false;
+        }
+        else if (Input.GetAxisRaw("Horizontal") == -1)
+        {
+            _anim.SetFloat("Dir", 2);
+            _renderer.flipX = true;
         }
     }
 }

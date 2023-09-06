@@ -1115,19 +1115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe060c56f7d692b46bbf2e87dbdd4f45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1583271783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1121213748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33e2e2201d022ec439246f5f48453361, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 5
 --- !u!50 &1583271784
 Rigidbody2D:
   serializedVersion: 4
@@ -1312,6 +1299,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4353419487377474600, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4353419487377474600, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: -4353419487377474600, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.30980393
+      objectReference: {fileID: 0}
+    - target: {fileID: -4353419487377474600, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.24313727
+      objectReference: {fileID: 0}
+    - target: {fileID: -4353419487377474600, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.19607845
+      objectReference: {fileID: 0}
     - target: {fileID: 6902456715757067348, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
       propertyPath: m_Name
       value: Daemon
@@ -1334,7 +1341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6902456715757067349, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6902456715757067350, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
       propertyPath: m_RootOrder
