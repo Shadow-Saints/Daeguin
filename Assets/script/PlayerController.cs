@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    private Animator _anim; // Componente Animator
+
+    private SpriteRenderer _renderer; // Componente SpriteRenderer
+
     private float horizontal;
     private float vertical;
     
@@ -43,6 +47,8 @@ public class PlayerController : MonoBehaviour
         }
         
         _rb.velocity = new Vector2(horizontal * currentSpeed, vertical * currentSpeed);
+        _anim = GetComponent<Animator>(); // Anexando o componente Animator
+        _renderer = GetComponent<SpriteRenderer>(); // Anexando o componente SpriteRenderer
     }
 
     private void FixedUpdate()
@@ -103,6 +109,27 @@ public class PlayerController : MonoBehaviour
                 dashDirection = Vector2.left;
             }
             
+        if (Input.GetAxisRaw("Vertical") == 1) 
+        {
+            _anim.SetFloat("Dir", 1);
+            _renderer.flipX = false;
+        }
+        else if(Input.GetAxisRaw("Vertical") == -1) 
+        {
+            _anim.SetFloat("Dir", 0);
+            _renderer.flipX = false;
+        }
+        else if (Input.GetAxisRaw("Horizontal") == 1) 
+        {
+            _anim.SetFloat("Dir", 2);
+            _renderer.flipX = false;
+        }
+        else if (Input.GetAxisRaw("Horizontal") == -1)
+        {
+            _anim.SetFloat("Dir", 2);
+            _renderer.flipX = true;
+        }
+
             if (dashDirection != Vector2.zero)
             {
                 StartCoroutine(Dash(dashDirection));

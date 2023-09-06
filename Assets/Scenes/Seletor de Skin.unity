@@ -152,10 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5275625063d3c194084f2ab15d96c3c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Skinindex: 0
   _skin:
-  - {fileID: 11400000, guid: 2089f3f9062118b409fc9c52bdf3c217, type: 2}
-  - {fileID: 11400000, guid: 85ca0c0e7f4f3d6409081c9755593cb9, type: 2}
-  - {fileID: 11400000, guid: ac4af4f137075734081e1d77a17c8e9c, type: 2}
+  - {fileID: 11400000, guid: 0859b5a7653350848ad4ade2367d581b, type: 2}
+  - {fileID: 11400000, guid: 0dfa1438d859e774080e1cbd4b5c13e8, type: 2}
   _playerskin: {fileID: 1583271780}
 --- !u!4 &283348902
 Transform:
@@ -814,7 +814,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 283348901}
         m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: trocarskin
+        m_MethodName: ChangeSkin
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1056,7 +1056,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 283348901}
         m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: trocarskin
+        m_MethodName: ChangeSkin
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1127,12 +1127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33e2e2201d022ec439246f5f48453361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Speed: 4
-  _DashSpeed: 8
-  _dashingCooldown: 0.7
-  _RunSpeed: 6.5
-  _rb: {fileID: 1583271784}
-  _tr: {fileID: 6902456714174253541}
+  _speed: 5
 --- !u!50 &1583271784
 Rigidbody2D:
   serializedVersion: 4
@@ -1154,6 +1149,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!95 &1583271785
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121213748}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 81ee45860881e9a4588ac232836c9fb0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2104025601
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,14 +1312,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -4353419487377474600, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6902456715757067348, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Daemon
       objectReference: {fileID: 0}
+    - target: {fileID: 6902456715757067349, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1371204694, guid: 44810b6084f1bfb408bc21e16710688b, type: 3}
     - target: {fileID: 6902456715757067349, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -1323,6 +1339,18 @@ PrefabInstance:
     - target: {fileID: 6902456715757067350, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6902456715757067350, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.44315
+      objectReference: {fileID: 0}
+    - target: {fileID: 6902456715757067350, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.44315
+      objectReference: {fileID: 0}
+    - target: {fileID: 6902456715757067350, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.44315
       objectReference: {fileID: 0}
     - target: {fileID: 6902456715757067350, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1364,11 +1392,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5274819340669401722, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
+    - target: {fileID: 6902456715757067351, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
+      propertyPath: _newSkin
+      value: 
+      objectReference: {fileID: 11400000, guid: 0dfa1438d859e774080e1cbd4b5c13e8, type: 2}
+    - target: {fileID: 6902456715757067351, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5b469c54bddf17742b99ee26749b9f8d, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
---- !u!96 &6902456714174253541 stripped
-TrailRenderer:
-  m_CorrespondingSourceObject: {fileID: -4353419487377474600, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
-  m_PrefabInstance: {fileID: 6902456714174253540}
-  m_PrefabAsset: {fileID: 0}
