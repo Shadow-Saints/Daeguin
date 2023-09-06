@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d5bc1887f6fddf49882ad0ae1be373c, type: 3}
-  m_Name: Pinguin 2
+  m_Name: Default
   m_EditorClassIdentifier: 
-  sprite: {fileID: -2413806693520163455, guid: 41ad62e19d545f54f81609c27d05a227, type: 3}
-  animator: {fileID: 0}
+  sprite: {fileID: -445393562, guid: 44810b6084f1bfb408bc21e16710688b, type: 3}
+  animator: {fileID: 9100000, guid: 5b469c54bddf17742b99ee26749b9f8d, type: 2}

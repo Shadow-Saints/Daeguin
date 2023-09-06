@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField]
     private int _Skinindex; // Indice da skin do Player
 
     public static GameController instance; // Instancia do script GameController
@@ -29,11 +30,15 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        _Skinindex = 0;
+    }
+
     public void ChangeSkin(int increase) // Alterando a skin do Player
     {
         _Skinindex += increase; // incrementando o index da skin
-        _playerskin.sprite = _skin[_Skinindex].sprite; // Trocando a skin do Player
-
+        _playerskin._newSkin = _skin[_Skinindex]; // Trocando a skin do Player      
     }
 
     public void changeScene(int lvl) // Trocando de cena
