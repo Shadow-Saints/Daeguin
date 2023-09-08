@@ -1,5 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -13,11 +14,19 @@ public class Gun : MonoBehaviour
     [SerializeField]
     private GameObject _shoot; // Objeto do tiro
 
+    [SerializeField]
+    private float _shootDelay; // Delay do tiro
+    private float _timer;
+
+    [SerializeField]
     private Rigidbody2D _rig; // Componente Rigidbody2D
 
-    private void Start()
+    private float _mouseAngle; // Angulo de posição do mouse em relação ao Player
+
+
+    private void OnEnable()
     {
-        _rig = GetComponent<Rigidbody2D>(); // Obtendo o componente Rigidbody2D
+        _mainCamera = Camera.main;
     }
 
     private void Update()
@@ -28,12 +37,13 @@ public class Gun : MonoBehaviour
 
     void Shoot() // Disparo
     {
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0) && _timer > _shootDelay) 
         {
             GameObject newShoot = Instantiate(_shoot); // Instanciando o projétil
-            newShoot.transform.position = transform.position; // Alterando a posição do projétil
-            newShoot.transform.rotation = transform.rotation; // Alterando a rotação do projétil
+            newShoot.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0,0, _mouseAngle)); // posicionando o projétil
+            _timer = 0;
         }
+        _timer += Time.deltaTime;
     }
 
     private void Rotate() // Posição da mira
@@ -41,8 +51,7 @@ public class Gun : MonoBehaviour
         // Seguir Mouse
         _mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector2 _viewDirection = _mousePosition - _rig.position;
-        float _viewAngle = Mathf.Atan2(_viewDirection.y, _viewDirection.x) * Mathf.Rad2Deg;
-        _rig.rotation = _viewAngle;
+        _mouseAngle = Mathf.Atan2(_viewDirection.y, _viewDirection.x) * Mathf.Rad2Deg;
     }
 
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     private float horizontal;
     private float vertical;
-    
+
     [SerializeField] private float _Speed;
     [SerializeField] private float _DashSpeed;
     [SerializeField] private float _dashingCooldown;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D _rig;
     [SerializeField] private TrailRenderer _tr;
 
+    [SerializeField] private GameObject _gun;
 
     private void Start()
     {
@@ -36,7 +38,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Move();
         DirectionDash();
         
         if (isDashing)
@@ -59,6 +60,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Move();
+
         if (isDashing)
         {
             _rig.velocity = _rig.velocity.normalized * _DashSpeed;
@@ -129,6 +132,14 @@ public class PlayerController : MonoBehaviour
             horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");
             _rig.velocity = new Vector3(horizontal * _currentSpeed, vertical * _currentSpeed, 0);
+            if(_gun.activeSelf == false) 
+            {
+                _gun.SetActive(true);
+            }
+        }
+        else 
+        {
+            _gun.SetActive(false);
         }
 
         if (Input.GetAxisRaw("Vertical") == 1)

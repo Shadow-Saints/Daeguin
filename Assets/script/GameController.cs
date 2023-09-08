@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private PlayerSkin _playerskin;
 
+    public int currentScene;
+
     private void Awake()
     {
         DontDestroyOnLoad(this); // Função responsável por não destruir o player durante a troca de cena
@@ -33,6 +35,8 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         _Skinindex = 0;
+        ChangeSkin(0);
+        
     }
 
     public void ChangeSkin(int increase) // Alterando a skin do Player
@@ -44,6 +48,7 @@ public class GameController : MonoBehaviour
     public void changeScene(int lvl) // Trocando de cena
     {
         SceneManager.LoadScene(lvl);
+        currentScene = SceneManager.GetActiveScene().buildIndex;
     }
     
 }
