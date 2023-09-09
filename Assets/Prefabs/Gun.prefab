@@ -47,4 +47,5 @@ MonoBehaviour:
   _mainCamera: {fileID: 0}
   _mousePosition: {x: 0, y: 0}
   _shoot: {fileID: 6034126806922475157, guid: c3a3409f1382acf46965b04f2a11fbbc, type: 3}
+  _shootDelay: 0.5
   _rig: {fileID: 0}

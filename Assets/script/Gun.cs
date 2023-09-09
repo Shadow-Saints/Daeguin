@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
@@ -53,5 +53,4 @@ public class Gun : MonoBehaviour
         Vector2 _viewDirection = _mousePosition - _rig.position;
         _mouseAngle = Mathf.Atan2(_viewDirection.y, _viewDirection.x) * Mathf.Rad2Deg;
     }
-
 }
