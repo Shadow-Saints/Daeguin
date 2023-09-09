@@ -1,22 +1,21 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
     public float moveSpeed = 3.0f; // Velocidade de movimento do inimigo
 
-    private Rigidbody2D rb;
-    private Vector2 randomDirection;
-    private Camera mainCamera;
-    private float minX, maxX, minY, maxY;
+    private Rigidbody2D _rig;
+    private Vector2 _randomDirection;
+    private Camera _mainCamera;
+    private float _minX, _maxX, _minY, _maxY;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        mainCamera = Camera.main;
+        _rig = GetComponent<Rigidbody2D>();
+        _mainCamera = Camera.main;
 
         // Calcula os limites da tela com base na posição da câmera
-        CalculateScreenBounds();
+        //CalculateScreenBounds();
 
         // Inicie o movimento aleatório
         GenerateRandomDirection();
@@ -25,17 +24,18 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         // Move o inimigo na direção aleatória
-        rb.velocity = randomDirection * moveSpeed;
+        _rig.velocity = _randomDirection * moveSpeed;
 
-        // Verifica se o inimigo atingiu os limites da tela
-        if (transform.position.x < minX || transform.position.x > maxX || transform.position.y < minY || transform.position.y > maxY)
-        {
-            // Se atingir os limites, gera uma nova direção aleatória
-            GenerateRandomDirection();
-        }
+        
+       
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // Verifique se o inimigo colidiu com um obstáculo
         if (collision.gameObject.CompareTag("Obstacle"))
@@ -45,21 +45,21 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void CalculateScreenBounds()
-    {
-        // Obtém a posição da câmera em relação ao mundo
-        Vector3 cameraPosition = mainCamera.transform.position;
+    /* private void CalculateScreenBounds()
+     {
+         // Obtém a posição da câmera em relação ao mundo
+         Vector3 cameraPosition = _mainCamera.transform.position;
 
-        // Calcula os limites da tela usando a câmera e o tamanho da tela
-        minX = cameraPosition.x - mainCamera.orthographicSize * mainCamera.aspect;
-        maxX = cameraPosition.x + mainCamera.orthographicSize * mainCamera.aspect;
-        minY = cameraPosition.y - mainCamera.orthographicSize;
-        maxY = cameraPosition.y + mainCamera.orthographicSize;
-    }
+         // Calcula os limites da tela usando a câmera e o tamanho da tela
+         _minX = cameraPosition.x - _mainCamera.orthographicSize * _mainCamera.aspect;
+         _maxX = cameraPosition.x + _mainCamera.orthographicSize * _mainCamera.aspect;
+         _minY = cameraPosition.y - _mainCamera.orthographicSize;
+         _maxY = cameraPosition.y + _mainCamera.orthographicSize;
+     }/*/
 
     private void GenerateRandomDirection()
     {
         // Gera uma nova direção aleatória
-        randomDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+        _randomDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
     }
 }

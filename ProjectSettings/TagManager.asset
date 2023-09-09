@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Obstacle
   - Enemy
+  - Pedro
+  - Cachoro
   layers:
   - Default
   - TransparentFX

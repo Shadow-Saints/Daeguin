@@ -158,6 +158,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0dfa1438d859e774080e1cbd4b5c13e8, type: 2}
   _playerskin: {fileID: 1583271780}
   currentScene: 0
+  _life: 0
 --- !u!4 &283348902
 Transform:
   m_ObjectHideFlags: 0
@@ -173,6 +174,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &341032782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6902456715757067348, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
+  m_PrefabInstance: {fileID: 6902456714174253540}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &423916180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,7 +1111,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6902456715757067351, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
   m_PrefabInstance: {fileID: 6902456714174253540}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 341032782}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe060c56f7d692b46bbf2e87dbdd4f45, type: 3}
@@ -1121,6 +1127,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6902456715757067350, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
   m_PrefabInstance: {fileID: 6902456714174253540}
   m_PrefabAsset: {fileID: 0}
+--- !u!70 &1583271791
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341032782}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.00000040350656, y: -0.07908594}
+  m_Size: {x: 3.220075, y: 3.6313229}
+  m_Direction: 0
 --- !u!1001 &1706804049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1341,6 +1363,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1583271784, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5274819340669401722, guid: fa852a4631495e74fbe8d5c36b887877, type: 3}
       propertyPath: _gun
       value: 

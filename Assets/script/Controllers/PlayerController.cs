@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private bool isRunning = false;
 
     [SerializeField] private Rigidbody2D _rig;
-    [SerializeField] private TrailRenderer _tr;
+    [SerializeField] private TrailRenderer _trail;
 
     [SerializeField] private GameObject _gun;
 
@@ -68,6 +68,33 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Pedro")) 
+        {
+            GameController.instance.Damege(10);
+            Invencible(1);
+        }else if (collision.gameObject.CompareTag("Cachoro")) 
+        {
+            GameController.instance.Damege(20);
+            Invencible(1);
+        }
+    }
+
+    private void Invencible(float seconds) 
+    {
+        CapsuleCollider2D collider2D = GetComponent<CapsuleCollider2D>();
+        collider2D.enabled = false;
+        Invoke("Tangible", seconds);
+    }
+
+    private void Tangible() 
+    {
+        CapsuleCollider2D collider2D = GetComponent<CapsuleCollider2D>();
+        collider2D.enabled = true;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("DashStopper"))
@@ -80,14 +107,14 @@ public class PlayerController : MonoBehaviour
     {
         isDashing = false;
         _rig.velocity = Vector2.zero;
-        _tr.emitting = false;
+        _trail.emitting = false;
     }
 
     private IEnumerator Dash(Vector2 direction)
     {
         canDash = false;
         isDashing = true;
-        _tr.emitting = true;
+        _trail.emitting = true;
         _rig.velocity = direction * _DashSpeed;
         yield return new WaitForSeconds(_dashingCooldown);
         StopDash();

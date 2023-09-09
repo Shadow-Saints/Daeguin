@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,9 @@ public class GameController : MonoBehaviour
 
     public int currentScene;
 
+    [SerializeField]
+    private float _life;
+
     private void Awake()
     {
         DontDestroyOnLoad(this); // Função responsável por não destruir o player durante a troca de cena
@@ -36,6 +40,8 @@ public class GameController : MonoBehaviour
     {
         _Skinindex = 0;
         ChangeSkin(0);
+
+        _life = 100;
         
     }
 
@@ -43,6 +49,12 @@ public class GameController : MonoBehaviour
     {
         _Skinindex += increase; // incrementando o index da skin
         _playerskin._newSkin = _skin[_Skinindex]; // Trocando a skin do Player      
+    }
+
+    public void Damege(int damege) 
+    {
+        _life -= damege;
+        Debug.Log(_life.ToString());
     }
 
     public void changeScene(int lvl) // Trocando de cena
