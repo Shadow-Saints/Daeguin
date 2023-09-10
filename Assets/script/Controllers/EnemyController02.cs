@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController02 : MonoBehaviour
@@ -32,12 +30,13 @@ public class EnemyController02 : MonoBehaviour
         }
     }
 
-    private void Animation() 
+    private void Animation()
     {
-        if (_direction.x < 0) 
+        if (_direction.x < 0)
         {
             _render.flipX = true;
-        }else if (_direction.x > 0) 
+        }
+        else if (_direction.x > 0)
         {
             _render.flipX = false;
         }

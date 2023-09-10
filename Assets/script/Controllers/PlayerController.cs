@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -39,14 +37,14 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         DirectionDash();
-        
+
         if (isDashing)
         {
             return;
         }
-        
-         _currentSpeed = isDashing ? _DashSpeed : _Speed;
-        
+
+        _currentSpeed = isDashing ? _DashSpeed : _Speed;
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
             _currentSpeed = _RunSpeed;
@@ -71,25 +69,26 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Pedro")) 
+        if (collision.gameObject.CompareTag("Pedro"))
         {
             GameController.instance.Damege(10);
             Invencible(1);
-        }else if (collision.gameObject.CompareTag("Cachoro")) 
+        }
+        else if (collision.gameObject.CompareTag("Cachoro"))
         {
             GameController.instance.Damege(20);
             Invencible(1);
         }
     }
 
-    private void Invencible(float seconds) 
+    private void Invencible(float seconds)
     {
         CapsuleCollider2D collider2D = GetComponent<CapsuleCollider2D>();
         collider2D.enabled = false;
         Invoke("Tangible", seconds);
     }
 
-    private void Tangible() 
+    private void Tangible()
     {
         CapsuleCollider2D collider2D = GetComponent<CapsuleCollider2D>();
         collider2D.enabled = true;
@@ -127,7 +126,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl) && canDash)
         {
             Vector2 dashDirection = Vector2.zero;
-            
+
             if (Input.GetKey(KeyCode.W))
             {
                 dashDirection = Vector2.up;
@@ -159,12 +158,12 @@ public class PlayerController : MonoBehaviour
             horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");
             _rig.velocity = new Vector3(horizontal * _currentSpeed, vertical * _currentSpeed, 0);
-            if(_gun.activeSelf == false) 
+            if (_gun.activeSelf == false)
             {
                 _gun.SetActive(true);
             }
         }
-        else 
+        else
         {
             _gun.SetActive(false);
         }

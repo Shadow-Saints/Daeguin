@@ -4,6 +4,8 @@ public class EnemyController3 : MonoBehaviour
 {
     private Rigidbody2D _rig;
 
+    private SpriteRenderer _renderer;
+
     void Go()
     {
         float random = Random.Range(0, 2);
@@ -19,6 +21,7 @@ public class EnemyController3 : MonoBehaviour
 
     private void Start()
     {
+        _renderer = GetComponent<SpriteRenderer>();
         _rig = GetComponent<Rigidbody2D>();
         Invoke("Go", 2);
     }
@@ -32,6 +35,15 @@ public class EnemyController3 : MonoBehaviour
         else if (_rig.velocity.y == 0)
         {
             _rig.velocity = new Vector2(_rig.velocity.x, Random.Range(1, 3));
+        }
+
+        if (_rig.velocity.x > 0)
+        {
+            _renderer.flipX = false;
+        }
+        else if (_rig.velocity.x < 0)
+        {
+            _renderer.flipX = true;
         }
     }
 

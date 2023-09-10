@@ -1,7 +1,4 @@
-﻿﻿using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
@@ -37,10 +34,10 @@ public class Gun : MonoBehaviour
 
     void Shoot() // Disparo
     {
-        if (Input.GetMouseButtonDown(0) && _timer > _shootDelay) 
+        if (Input.GetMouseButtonDown(0) && _timer > _shootDelay)
         {
             GameObject newShoot = Instantiate(_shoot); // Instanciando o projétil
-            newShoot.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0,0, _mouseAngle)); // posicionando o projétil
+            newShoot.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0, 0, _mouseAngle)); // posicionando o projétil
             _timer = 0;
         }
         _timer += Time.deltaTime;
