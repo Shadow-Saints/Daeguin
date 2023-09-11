@@ -4,12 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    private Animator _anim; // Componente Animator
-
-    private SpriteRenderer _renderer; // Componente SpriteRenderer
-
-    private float horizontal;
-    private float vertical;
+    private Animator _anim;
+    private SpriteRenderer _renderer;
+    private float _horizontal;
+    private float _vertical;
 
     [SerializeField] private float _Speed;
     [SerializeField] private float _DashSpeed;
@@ -26,6 +24,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _PlayerSpeedAfterDamage = 5f;
 
     [SerializeField] private GameObject _gun;
+    [SerializeField] private GameObject _shield;
+
+    public event System.Action<int> OnEnemyCollision; // Evento para comunicar colisões com inimigos
 
     private void Start()
     {
@@ -66,58 +67,52 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-private void OnCollisionEnter2D(Collision2D collision)
-{
-    if (collision.gameObject.CompareTag("Pedro"))
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameController.instance.Damege(5);
-        Invencible(1);
+        if (collision.gameObject.CompareTag("Pedro"))
+        {
+            GameController.instance.Damege(5);
+            Invencible(1); // Chame a função Invencible do PlayerController
+        }
+        else if (collision.gameObject.CompareTag("Cachoro"))
+        {
+            GameController.instance.Damege(15);
+            Invencible(1); // Chame a função Invencible do PlayerController
+        }
+        else if (collision.gameObject.CompareTag("Fotografo"))
+        {
+            GameController.instance.Damege(10);
+            Invencible(1); // Chame a função Invencible do PlayerController
+        }
+        else if (collision.gameObject.CompareTag("Ciclista"))
+        {
+            GameController.instance.Damege(20);
+            Invencible(1); // Chame a função Invencible do PlayerController
+        }
+        else if (collision.gameObject.CompareTag("BixoDeNeve"))
+        {
+            GameController.instance.Damege(12);
+            Invencible(1); // Chame a função Invencible do PlayerController
+            StartCoroutine(DecreasePlayerSpeed(10f)); // Diminui a velocidade por 10 segundos.
+        }
+        else if (collision.gameObject.CompareTag("NeveQueMorde"))
+        {
+            GameController.instance.Damege(17);
+            Invencible(1); // Chame a função Invencible do PlayerController
+            StartCoroutine(DecreasePlayerSpeed(10f)); // Diminui a velocidade por 10 segundos.
+        }
+        else if (collision.gameObject.CompareTag("Urso"))
+        {
+            GameController.instance.Damege(25);
+            Invencible(1); // Chame a função Invencible do PlayerController
+        }
+        else if (collision.gameObject.CompareTag("BolaDeNeveUrso"))
+        {
+            GameController.instance.Damege(15);
+            Invencible(1); // Chame a função Invencible do PlayerController
+            StartCoroutine(DecreasePlayerSpeed(10f)); // Diminui a velocidade por 10 segundos.
+        }
     }
-    else if (collision.gameObject.CompareTag("Cachoro"))
-    {
-        GameController.instance.Damege(15);
-        Invencible(1);
-    }
-    else if (collision.gameObject.CompareTag("Fotografo"))
-    {
-        GameController.instance.Damege(10);
-        Invencible(1);
-    }
-    else if (collision.gameObject.CompareTag("Ciclista"))
-    {
-        GameController.instance.Damege(20);
-        Invencible(1);
-    }
-    else if (collision.gameObject.CompareTag("BixoDeNeve"))
-    {
-        GameController.instance.Damege(12);
-        Invencible(1);
-        StartCoroutine(DecreasePlayerSpeed(10f)); // Diminui a velocidade por 10 segundos.
-    }
-    else if (collision.gameObject.CompareTag("NeveQueMorde"))
-    {
-        GameController.instance.Damege(17);
-        Invencible(1);
-        StartCoroutine(DecreasePlayerSpeed(10f)); // Diminui a velocidade por 10 segundos.
-    }
-    else if (collision.gameObject.CompareTag("Urso"))
-    {
-        GameController.instance.Damege(25);
-        Invencible(1);
-    }
-    else if (collision.gameObject.CompareTag("BolaDeNeveUrso"))
-    {
-        GameController.instance.Damege(15);
-        Invencible(1);
-        StartCoroutine(DecreasePlayerSpeed(10f)); // Diminui a velocidade por 10 segundos.
-    }
-    else if (collision.gameObject.CompareTag("Peixe"))
-    {
-        GameController.instance.Damege(-15);
-        Invencible(2);
-    }
-}
 
     private IEnumerator DecreasePlayerSpeed(float duration)
     {
@@ -126,11 +121,11 @@ private void OnCollisionEnter2D(Collision2D collision)
         _currentSpeed = isDashing ? _DashSpeed : _Speed; // Retorna à velocidade normal após o tempo especificado.
     }
 
-    private void Invencible(float seconds)
+    public void Invencible(float seconds) // Modificamos para ser pública
     {
         CapsuleCollider2D collider2D = GetComponent<CapsuleCollider2D>();
         collider2D.enabled = false;
-        Invoke("Tangible", seconds);
+        Invoke(nameof(Tangible), seconds);
     }
 
     private void Tangible()
@@ -144,6 +139,19 @@ private void OnCollisionEnter2D(Collision2D collision)
         if (collision.CompareTag("DashStopper"))
         {
             StopDash();
+        }
+
+        if (collision.CompareTag("Escudo"))
+        {
+            _shield.SetActive(true);
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Peixe"))
+        {
+            GameController.instance.Damege(-15);
+            Destroy(collision.gameObject);
+            Invencible(2);
         }
     }
 
@@ -198,11 +206,11 @@ private void OnCollisionEnter2D(Collision2D collision)
 
     private void Move()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (SceneManager.GetActiveScene().buildIndex != 1)
         {
-            horizontal = Input.GetAxis("Horizontal");
-            vertical = Input.GetAxis("Vertical");
-            _rig.velocity = new Vector3(horizontal * _currentSpeed, vertical * _currentSpeed, 0);
+            _horizontal = Input.GetAxis("Horizontal");
+            _vertical = Input.GetAxis("Vertical");
+            _rig.velocity = new Vector3(_horizontal * _currentSpeed, _vertical * _currentSpeed, 0);
             if (_gun.activeSelf == false)
             {
                 _gun.SetActive(true);
