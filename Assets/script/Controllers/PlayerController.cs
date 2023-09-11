@@ -17,13 +17,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _RunSpeed;
     private float _currentSpeed;
 
-
     private bool canDash = true;
     private bool isDashing = false;
     private bool isRunning = false;
 
     [SerializeField] private Rigidbody2D _rig;
     [SerializeField] private TrailRenderer _trail;
+    [SerializeField] private float _PlayerSpeedAfterDamage = 5f;
 
     [SerializeField] private GameObject _gun;
 
@@ -67,18 +67,63 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+private void OnCollisionEnter2D(Collision2D collision)
+{
+    if (collision.gameObject.CompareTag("Pedro"))
     {
-        if (collision.gameObject.CompareTag("Pedro"))
-        {
-            GameController.instance.Damege(10);
-            Invencible(1);
-        }
-        else if (collision.gameObject.CompareTag("Cachoro"))
-        {
-            GameController.instance.Damege(20);
-            Invencible(1);
-        }
+        GameController.instance.Damege(5);
+        Invencible(1);
+    }
+    else if (collision.gameObject.CompareTag("Cachoro"))
+    {
+        GameController.instance.Damege(15);
+        Invencible(1);
+    }
+    else if (collision.gameObject.CompareTag("Fotografo"))
+    {
+        GameController.instance.Damege(10);
+        Invencible(1);
+    }
+    else if (collision.gameObject.CompareTag("Ciclista"))
+    {
+        GameController.instance.Damege(20);
+        Invencible(1);
+    }
+    else if (collision.gameObject.CompareTag("BixoDeNeve"))
+    {
+        GameController.instance.Damege(12);
+        Invencible(1);
+        StartCoroutine(DecreasePlayerSpeed(10f)); // Diminui a velocidade por 10 segundos.
+    }
+    else if (collision.gameObject.CompareTag("NeveQueMorde"))
+    {
+        GameController.instance.Damege(17);
+        Invencible(1);
+        StartCoroutine(DecreasePlayerSpeed(10f)); // Diminui a velocidade por 10 segundos.
+    }
+    else if (collision.gameObject.CompareTag("Urso"))
+    {
+        GameController.instance.Damege(25);
+        Invencible(1);
+    }
+    else if (collision.gameObject.CompareTag("BolaDeNeveUrso"))
+    {
+        GameController.instance.Damege(15);
+        Invencible(1);
+        StartCoroutine(DecreasePlayerSpeed(10f)); // Diminui a velocidade por 10 segundos.
+    }
+    else if (collision.gameObject.CompareTag("Peixe"))
+    {
+        GameController.instance.Damege(-15);
+        Invencible(2);
+    }
+}
+
+    private IEnumerator DecreasePlayerSpeed(float duration)
+    {
+        _currentSpeed = _PlayerSpeedAfterDamage; // Define a velocidade do jogador após sofrer dano.
+        yield return new WaitForSeconds(duration);
+        _currentSpeed = isDashing ? _DashSpeed : _Speed; // Retorna à velocidade normal após o tempo especificado.
     }
 
     private void Invencible(float seconds)

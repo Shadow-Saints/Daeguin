@@ -8,6 +8,13 @@ TagManager:
   - Enemy
   - Pedro
   - Cachoro
+  - Fotografo
+  - Ciclista
+  - BixoDeNeve
+  - NeveQueMorde
+  - Urso
+  - BolaDeNeveUrso
+  - Peixe
   layers:
   - Default
   - TransparentFX
