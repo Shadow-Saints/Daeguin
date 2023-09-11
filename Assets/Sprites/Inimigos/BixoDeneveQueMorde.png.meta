@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d6cfa1467c67843469f186de83f6889f
+guid: 247f67ccf8cbbf2468ad6ccf13e0d14a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -113,17 +113,29 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bici_0
+      name: BixoDeneveQueMorde_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 12
-        width: 262
-        height: 229
+        x: 93
+        y: 40
+        width: 120
+        height: 220
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40803319549e36e40bffe1b08c758735
-      internalID: -1235182495
+      spriteID: 8e1e9aa1351912649b0e9595b37537ce
+      internalID: -1496312171
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bici_1
+      name: BixoDeneveQueMorde_1
       rect:
         serializedVersion: 2
-        x: 312
-        y: 12
-        width: 276
-        height: 229
+        x: 393
+        y: 33
+        width: 120
+        height: 234
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +164,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35cf0052e1e056a47934e53fe70412b8
-      internalID: -1303686940
+      spriteID: 5a76ba45747263241b01f41b6223cbc6
+      internalID: 2109704693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bici_2
+      name: BixoDeneveQueMorde_2
       rect:
         serializedVersion: 2
-        x: 612
-        y: 12
-        width: 276
-        height: 229
+        x: 693
+        y: 27
+        width: 120
+        height: 246
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +185,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4a2a7758cdd43e489a7fd322a7933f7
-      internalID: 1277740878
+      spriteID: 2cdb1cff37942474495d7986c94c90ed
+      internalID: -803367023
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bici_3
+      name: BixoDeneveQueMorde_4
       rect:
         serializedVersion: 2
-        x: 912
-        y: 12
-        width: 276
-        height: 229
+        x: 993
+        y: 33
+        width: 120
+        height: 227
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,20 +206,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e11eb427d3d8f24cbe70bd58737a678
-      internalID: -1490358285
+      spriteID: 01508fff7600214458621a859697b2a1
+      internalID: 1774469023
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bici_4
+      name: BixoDeneveQueMorde_5
       rect:
         serializedVersion: 2
-        x: 1212
-        y: 12
-        width: 282
-        height: 229
+        x: 1293
+        y: 33
+        width: 120
+        height: 220
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,50 +227,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10e7aebea21fcaa45ab59a91e1c71430
-      internalID: -699290408
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bici_5
-      rect:
-        serializedVersion: 2
-        x: 1512
-        y: 12
-        width: 276
-        height: 229
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 013423533f51bed44a16571c163c9e2c
-      internalID: -2129869210
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bici_6
-      rect:
-        serializedVersion: 2
-        x: 1819
-        y: 12
-        width: 269
-        height: 229
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4f9ce093e2d6b1648b377ed75c11593d
-      internalID: 258269687
+      spriteID: 4242237efdd55d04ba999b5d3caf466d
+      internalID: -862484841
       vertices: []
       indices: 
       edges: []
@@ -274,13 +244,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      bici_0: -1235182495
-      bici_1: -1303686940
-      bici_2: 1277740878
-      bici_3: -1490358285
-      bici_4: -699290408
-      bici_5: -2129869210
-      bici_6: 258269687
+      BixoDeneveQueMorde_0: -1496312171
+      BixoDeneveQueMorde_1: 2109704693
+      BixoDeneveQueMorde_2: -803367023
+      BixoDeneveQueMorde_3: -903304859
+      BixoDeneveQueMorde_4: 1774469023
+      BixoDeneveQueMorde_5: -862484841
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

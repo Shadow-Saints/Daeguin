@@ -23,7 +23,7 @@ public class EnemyController3 : MonoBehaviour
     {
         _renderer = GetComponent<SpriteRenderer>();
         _rig = GetComponent<Rigidbody2D>();
-        Invoke("Go", 2);
+        Invoke(nameof(Go), 2);
     }
 
     private void Update()

@@ -26,7 +26,7 @@ public class EnemyController02 : MonoBehaviour
             _direction.Normalize(); // Normaliza para manter a velocidade constante
 
             // Move o inimigo na direção do jogador
-            transform.Translate(_direction * moveSpeed * Time.deltaTime);
+            transform.Translate(moveSpeed * Time.deltaTime * _direction);
         }
     }
 

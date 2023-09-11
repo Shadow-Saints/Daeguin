@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -17,10 +20,14 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private PlayerSkin _playerskin;
 
-    public int currentScene;
-
     [SerializeField]
     private float _life;
+
+    [SerializeField]
+    private Slider _slider;
+
+    [SerializeField]
+    private GameObject _internalCanvas;
 
     private void Awake()
     {
@@ -40,9 +47,8 @@ public class GameController : MonoBehaviour
     {
         _Skinindex = 0;
         ChangeSkin(0);
-
         _life = 100;
-        
+        _slider.value = _life;
     }
 
     public void ChangeSkin(int increase) // Alterando a skin do Player
@@ -53,14 +59,29 @@ public class GameController : MonoBehaviour
 
     public void Damege(int damege) 
     {
-        _life -= damege;
-        Debug.Log(_life.ToString());
+        if (_life < 100)
+        {
+            _life -= damege;
+            Debug.Log(_life.ToString());
+            _slider.value = _life;
+        }else if(_life > 100) 
+        {
+            _life = 100;
+        }
     }
 
-    public void changeScene(int lvl) // Trocando de cena
+    public void ChangeScene(int lvl) // Trocando de cena
     {
         SceneManager.LoadScene(lvl);
-        currentScene = SceneManager.GetActiveScene().buildIndex;
+        if (lvl > 1) 
+        {
+            _internalCanvas.SetActive(true);
+        }
+        else 
+        {
+            _internalCanvas.SetActive(false);
+        }
+
     }
     
 }

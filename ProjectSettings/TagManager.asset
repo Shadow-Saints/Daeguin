@@ -15,6 +15,8 @@ TagManager:
   - Urso
   - BolaDeNeveUrso
   - Peixe
+  - Escudo
+  - Life Bar
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - Fundo
   - Water
   - UI
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -51,4 +53,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3687926767
+    locked: 0
+  - name: Player
+    uniqueID: 498668675
+    locked: 0
+  - name: Elements
+    uniqueID: 2142338593
     locked: 0

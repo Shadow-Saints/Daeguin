@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour
 
     private SpriteRenderer _renderer; // Componente SpriteRenderer
 
-    private float horizontal;
-    private float vertical;
+    private float _horizontal;
+    private float _vertical;
 
     [SerializeField] private float _Speed;
     [SerializeField] private float _DashSpeed;
@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _PlayerSpeedAfterDamage = 5f;
 
     [SerializeField] private GameObject _gun;
+
+    [SerializeField] private GameObject _shield;
 
     private void Start()
     {
@@ -112,11 +114,7 @@ private void OnCollisionEnter2D(Collision2D collision)
         Invencible(1);
         StartCoroutine(DecreasePlayerSpeed(10f)); // Diminui a velocidade por 10 segundos.
     }
-    else if (collision.gameObject.CompareTag("Peixe"))
-    {
-        GameController.instance.Damege(-15);
-        Invencible(2);
-    }
+    
 }
 
     private IEnumerator DecreasePlayerSpeed(float duration)
@@ -130,7 +128,7 @@ private void OnCollisionEnter2D(Collision2D collision)
     {
         CapsuleCollider2D collider2D = GetComponent<CapsuleCollider2D>();
         collider2D.enabled = false;
-        Invoke("Tangible", seconds);
+        Invoke(nameof(Tangible), seconds);
     }
 
     private void Tangible()
@@ -144,6 +142,19 @@ private void OnCollisionEnter2D(Collision2D collision)
         if (collision.CompareTag("DashStopper"))
         {
             StopDash();
+        }
+
+        if (collision.CompareTag("Escudo")) 
+        {
+            _shield.SetActive(true);
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Peixe"))
+        {
+            GameController.instance.Damege(-15);
+            Destroy(collision.gameObject);
+            Invencible(2);
         }
     }
 
@@ -198,11 +209,11 @@ private void OnCollisionEnter2D(Collision2D collision)
 
     private void Move()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (SceneManager.GetActiveScene().buildIndex != 1)
         {
-            horizontal = Input.GetAxis("Horizontal");
-            vertical = Input.GetAxis("Vertical");
-            _rig.velocity = new Vector3(horizontal * _currentSpeed, vertical * _currentSpeed, 0);
+            _horizontal = Input.GetAxis("Horizontal");
+            _vertical = Input.GetAxis("Vertical");
+            _rig.velocity = new Vector3(_horizontal * _currentSpeed, _vertical * _currentSpeed, 0);
             if (_gun.activeSelf == false)
             {
                 _gun.SetActive(true);
