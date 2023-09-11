@@ -12,27 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Seletor de Skin.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Praia/1.unity
-    guid: 2cb9fb7a3a30945418d3d9016e7e6cca
-  - enabled: 1
-    path: Assets/Scenes/Praia/2.unity
-    guid: 3e458c54234ec634e8ea7071cce3f690
-  - enabled: 1
-    path: Assets/Scenes/Praia/3.unity
-    guid: a9543d1b0479f5a479c44c2f89128f94
-  - enabled: 1
-    path: Assets/Scenes/Praia/4.unity
-    guid: 2f3250b3f8700984eb059a64b9dc559b
-  - enabled: 1
-    path: Assets/Scenes/Praia/5.unity
-    guid: 2d7da85258cf63c43a565fda598aefec
-  - enabled: 1
-    path: Assets/Scenes/Praia/6.unity
-    guid: ad473652c9a267b4288b93a4ab6a4bd7
-  - enabled: 1
-    path: Assets/Scenes/Praia/7.unity
-    guid: edf3cf4608be69343916efc73d829ede
-  - enabled: 1
-    path: Assets/Scenes/Praia/8.unity
-    guid: 58b9a9c3e899f194fbd57b6bc2f7f563
+    path: Assets/Scenes/Fase(test).unity
+    guid: e33770788c3bb454f896c910bbea73d9
   m_configObjects: {}

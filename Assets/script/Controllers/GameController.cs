@@ -29,6 +29,11 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private GameObject _internalCanvas;
 
+    [SerializeField] private TextMeshProUGUI _timerText;
+
+    private float _timerSec;
+    private float _timerMins;
+
     private void Awake()
     {
         DontDestroyOnLoad(this); // Função responsável por não destruir o player durante a troca de cena
@@ -83,5 +88,28 @@ public class GameController : MonoBehaviour
         }
 
     }
-    
+
+    private void Timer() 
+    {
+        if (_timerSec > 60) 
+        {
+            _timerMins++;
+        }
+        _timerSec += Time.deltaTime;
+
+        _timerText.text = _timerMins.ToString("F0") + ":" + _timerSec.ToString("F0");
+    }
+
+    private void Update()
+    {
+        if(SceneManager.GetActiveScene().buildIndex > 1) 
+        {
+            Timer();
+        }else 
+        {
+            _timerSec = 0;
+            _timerMins = 0;
+        }
+    }
+
 }
