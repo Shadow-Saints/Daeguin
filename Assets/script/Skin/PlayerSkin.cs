@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSkin : MonoBehaviour
@@ -19,6 +17,6 @@ public class PlayerSkin : MonoBehaviour
     private void Update()
     {
         _skin.sprite = _newSkin.sprite; // Alterando a skin
-        _anim.runtimeAnimatorController = _newSkin.animator; 
+        _anim.runtimeAnimatorController = _newSkin.animator;
     }
 }
