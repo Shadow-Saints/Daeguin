@@ -1,8 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,34 +6,28 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     [SerializeField]
-    private int _Skinindex; // Indice da skin do Player
-
-    public static GameController instance; // Instancia do script GameController
-
+    private int _Skinindex;
+    public static GameController instance;
     [SerializeField]
-    private SeletorDeSkin[] _skin; // Array responsável por armazenar as skins
-
+    private SeletorDeSkin[] _skin;
     [SerializeField]
     private PlayerSkin _playerskin;
-
     [SerializeField]
     private float _life;
-
     [SerializeField]
     private Slider _slider;
-
     [SerializeField]
     private GameObject _internalCanvas;
 
     private void Awake()
     {
-        DontDestroyOnLoad(this); // Função responsável por não destruir o player durante a troca de cena
+        DontDestroyOnLoad(this);
 
-        // Implementando o Padrão singleton
-        if (instance == null) 
+        if (instance == null)
         {
             instance = this;
-        }else if (instance != this)
+        }
+        else if (instance != this)
         {
             Destroy(this);
         }
@@ -49,39 +39,56 @@ public class GameController : MonoBehaviour
         ChangeSkin(0);
         _life = 100;
         _slider.value = _life;
+
+        // Verifique se a cena atual é a cena do jogo (onde o jogador pode perder vida)
+        if (SceneManager.GetActiveScene().buildIndex == 2) // Substitua o número 2 pelo índice da cena do jogo
+        {
+            // Inicialize a vida e o slider
+            _life = 100;
+            _slider.value = _life;
+        }
     }
 
-    public void ChangeSkin(int increase) // Alterando a skin do Player
+    public void ChangeSkin(int increase)
     {
-        _Skinindex += increase; // incrementando o index da skin
-        _playerskin._newSkin = _skin[_Skinindex]; // Trocando a skin do Player      
+        _Skinindex += increase;
+        _playerskin._newSkin = _skin[_Skinindex];
     }
 
-    public void Damege(int damege) 
+    public void Damege(int damege)
     {
         if (_life < 100)
         {
             _life -= damege;
             Debug.Log(_life.ToString());
             _slider.value = _life;
-        }else if(_life > 100) 
+        }
+        else if (_life > 100)
         {
             _life = 100;
         }
     }
 
-    public void ChangeScene(int lvl) // Trocando de cena
+    public void ChangeScene(int lvl)
     {
         SceneManager.LoadScene(lvl);
-        if (lvl > 1) 
+        if (lvl > 1)
         {
             _internalCanvas.SetActive(true);
         }
-        else 
+        else
         {
             _internalCanvas.SetActive(false);
         }
-
     }
-    
+
+    public void Die()
+    {
+        // Redefina a vida e o slider
+        _life = 100;
+        _slider.value = _life;
+
+//criar um cena para ser a de game over e recaregar
+        SceneManager.LoadScene(1);
+    }
 }

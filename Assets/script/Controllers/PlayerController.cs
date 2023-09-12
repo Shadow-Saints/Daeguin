@@ -4,127 +4,324 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    private Animator _anim; // Componente Animator
+    #region Variables
 
-    private SpriteRenderer _renderer; // Componente SpriteRenderer
+private float _horizontal;
+private float _vertical;
 
-    private float _horizontal;
-    private float _vertical;
+    [Header("Movement")]
+    [SerializeField] private float speed = 5f; // Velocidade padrão de movimento
+    [SerializeField] private float dashSpeed = 10f; // Velocidade do dash
+    [SerializeField] private float _PlayerSpeedAfterDamage = 5f; // Velocidade do jogador após sofrer dano
+    [SerializeField] private float runSpeed = 7f; // Velocidade de corrida
 
-    [SerializeField] private float _Speed;
-    [SerializeField] private float _DashSpeed;
-    [SerializeField] private float _dashingCooldown;
-    [SerializeField] private float _RunSpeed;
-    private float _currentSpeed;
+    private float currentSpeed; // Velocidade atual do jogador
+    private bool isRunning = false; // Verifica se o jogador está correndo
 
-    private bool canDash = true;
-    private bool isDashing = false;
-    private bool isRunning = false;
+    [Header("Dash")]
+    [SerializeField] private float dashCooldown = 1f; // Tempo de recarga do dash
+    private bool canDash = true; // Flag para controlar se o jogador pode dar dash
+    private bool isDashing = false; // Verifica se o jogador está dando dash
 
-    [SerializeField] private Rigidbody2D _rig;
-    [SerializeField] private TrailRenderer _trail;
-    [SerializeField] private float _PlayerSpeedAfterDamage = 5f;
+    [Header("Health")]
+    [SerializeField] private int maxHealth = 100; // Vida máxima do jogador
+    private int currentHealth; // Vida atual do jogador
 
-    [SerializeField] private GameObject _gun;
+    [Header("Components")]
+    private Animator _anim; // Componente do Animator
+    private SpriteRenderer _renderer; // Componente do SpriteRenderer
+    private Rigidbody2D _rig; // Componente do Rigidbody2D
+    private TrailRenderer _trail; // Componente do TrailRenderer
+    [SerializeField] private GameObject _gun; // Referência ao objeto de arma
+    [SerializeField] private GameObject _shield; // Referência ao objeto de escudo
 
-    [SerializeField] private GameObject _shield;
+    #endregion
+
+    #region Unity Callbacks
 
     private void Start()
     {
-        _rig = GetComponent<Rigidbody2D>();
-        _anim = GetComponent<Animator>();
-        _renderer = GetComponent<SpriteRenderer>();
+        InitializeComponents();
+        InitializeHealth();
     }
 
     private void Update()
     {
-        DirectionDash();
-
-        if (isDashing)
-        {
-            return;
-        }
-
-        _currentSpeed = isDashing ? _DashSpeed : _Speed;
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            _currentSpeed = _RunSpeed;
-            isRunning = true;
-        }
-        else
-        {
-            isRunning = false;
-        }
+        HandleInput();
+        UpdateGunPosition();
     }
 
     private void FixedUpdate()
     {
         Move();
+        HandleDash();
+    }
 
-        if (isDashing)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        HandleCollisionWithEnemy(collision);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        HandleTriggerEnter(collision);
+    }
+
+    private void HandleTriggerEnter(Collider2D collision)
+{
+    if (collision.gameObject.name == "DashStopper")
+    {
+        StopDash();
+    }
+
+    if (collision.CompareTag("Escudo"))
+    {
+        _shield.SetActive(true);
+        Destroy(collision.gameObject);
+    }
+
+    if (collision.CompareTag("Peixe"))
+    {
+        GameController.instance.Damege(-15);
+        Destroy(collision.gameObject);
+        Invencible(2);
+    }
+}
+
+    #endregion
+
+    #region Initialization
+
+    private void InitializeComponents()
+    {
+        _anim = GetComponent<Animator>();
+        _renderer = GetComponent<SpriteRenderer>();
+        _rig = GetComponent<Rigidbody2D>();
+        _trail = GetComponent<TrailRenderer>();
+    }
+
+    private void InitializeHealth()
+    {
+        currentHealth = maxHealth;
+    }
+
+    #endregion
+
+    #region Input Handling
+
+    private void HandleInput()
+    {
+        DirectionDash();
+        HandleRunningInput();
+    }
+
+    private void HandleRunningInput()
+    {
+        isRunning = Input.GetKey(KeyCode.LeftShift);
+        currentSpeed = isRunning ? runSpeed : speed;
+    }
+
+    #endregion
+
+    #region Movement
+
+    private void Move()
+    {
+        if (SceneManager.GetActiveScene().buildIndex != 1)
         {
-            _rig.velocity = _rig.velocity.normalized * _DashSpeed;
+        _horizontal = Input.GetAxis("Horizontal");
+        _vertical = Input.GetAxis("Vertical");
+        _rig.velocity = new Vector3(_horizontal * currentSpeed, _vertical * currentSpeed, 0);
+        if (_gun.activeSelf == false){
+            _gun.SetActive(true);
+        }else{
+            _gun.SetActive(false);
+        }
+;
+        }
+
+
+
+        UpdateAnimator();
+    }
+
+    private void UpdateAnimator()
+    {
+        float verticalInput = Input.GetAxisRaw("Vertical");
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+
+        if (verticalInput == 1)
+        {
+            _anim.SetFloat("Dir", 1);
+            _renderer.flipX = false;
+        }
+        else if (verticalInput == -1)
+        {
+            _anim.SetFloat("Dir", 0);
+            _renderer.flipX = false;
+        }
+        else if (horizontalInput == 1)
+        {
+            _anim.SetFloat("Dir", 2);
+            _renderer.flipX = false;
+        }
+        else if (horizontalInput == -1)
+        {
+            _anim.SetFloat("Dir", 2);
+            _renderer.flipX = true;
         }
     }
 
+    private void UpdateGunPosition()
+    {
+        if (_gun.activeSelf)
+        {
+            _gun.transform.position = transform.position;
+        }
+    }
 
-private void OnCollisionEnter2D(Collision2D collision)
-{
-    if (collision.gameObject.CompareTag("Pedro"))
+    #endregion
+
+    #region Dash
+
+    private void DirectionDash()
     {
-        GameController.instance.Damege(5);
-        Invencible(1);
+        if (Input.GetKey(KeyCode.LeftControl) && canDash)
+        {
+            Vector2 dashDirection = GetDashDirection();
+            if (dashDirection != Vector2.zero)
+            {
+                StartCoroutine(Dash(dashDirection));
+            }
+        }
     }
-    else if (collision.gameObject.CompareTag("Cachoro"))
+
+    private Vector2 GetDashDirection()
     {
-        GameController.instance.Damege(15);
-        Invencible(1);
+        Vector2 dashDirection = Vector2.zero;
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            dashDirection = Vector2.up;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            dashDirection = Vector2.down;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            dashDirection = Vector2.right;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            dashDirection = Vector2.left;
+        }
+
+        return dashDirection;
     }
-    else if (collision.gameObject.CompareTag("Fotografo"))
+
+    private IEnumerator Dash(Vector2 direction)
     {
-        GameController.instance.Damege(10);
-        Invencible(1);
+        canDash = false;
+        isDashing = true;
+        _trail.emitting = true;
+        _rig.velocity = direction * dashSpeed;
+
+        yield return new WaitForSeconds(dashCooldown);
+
+        StopDash();
+        yield return new WaitForSeconds(0.2f);
+
+        canDash = true;
     }
-    else if (collision.gameObject.CompareTag("Ciclista"))
+
+    private void StopDash()
     {
-        GameController.instance.Damege(20);
-        Invencible(1);
+        isDashing = false;
+        _rig.velocity = Vector2.zero;
+        _trail.emitting = false;
     }
-    else if (collision.gameObject.CompareTag("BixoDeNeve"))
+
+    private void HandleDash()
     {
-        GameController.instance.Damege(12);
-        Invencible(1);
-        StartCoroutine(DecreasePlayerSpeed(10f)); // Diminui a velocidade por 10 segundos.
+        if (isDashing)
+        {
+            _rig.velocity = _rig.velocity.normalized * dashSpeed;
+        }
     }
-    else if (collision.gameObject.CompareTag("NeveQueMorde"))
+
+    #endregion
+
+    #region Health and Damage
+
+    private void HandleCollisionWithEnemy(Collision2D collision)
     {
-        GameController.instance.Damege(17);
-        Invencible(1);
-        StartCoroutine(DecreasePlayerSpeed(10f)); // Diminui a velocidade por 10 segundos.
+        if (IsEnemyCollision(collision))
+        {
+            int damage = GetDamageForEnemy(collision.gameObject.tag);
+            GameController.instance.Damege(damage);
+            TakeDamage(damage);
+            Invencible(1);
+        }
     }
-    else if (collision.gameObject.CompareTag("Urso"))
+
+    private bool IsEnemyCollision(Collision2D collision)
     {
-        GameController.instance.Damege(25);
-        Invencible(1);
+        return collision.gameObject.CompareTag("Pedro")
+            || collision.gameObject.CompareTag("Cachoro")
+            || collision.gameObject.CompareTag("NeveQueMorde")
+            || collision.gameObject.CompareTag("Ciclista")
+            || collision.gameObject.CompareTag("BixoDeNeve");
     }
-    else if (collision.gameObject.CompareTag("BolaDeNeveUrso"))
+
+    private int GetDamageForEnemy(string enemyTag)
     {
-        GameController.instance.Damege(15);
-        Invencible(1);
-        StartCoroutine(DecreasePlayerSpeed(10f)); // Diminui a velocidade por 10 segundos.
+        switch (enemyTag)
+        {
+            case "Pedro":
+                return 10;
+            case "Cachoro":
+                return 15;
+            case "NeveQueMorde":
+                return 20;
+            case "Ciclista":
+                return 15;
+            case "BixoDeNeve":
+                return 5;
+            default:
+                return 0;
+        }
     }
-    
-}
+
+    public void TakeDamage(int damageAmount)
+    {
+        currentHealth -= damageAmount;
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject); // Destrua o jogador quando a saúde chegar a zero
+        GameController.instance.Die(); // Chama o método Die do GameController
+
+    }
+
+    #endregion
+
+    #region Invincibility
 
     private IEnumerator DecreasePlayerSpeed(float duration)
     {
-        _currentSpeed = _PlayerSpeedAfterDamage; // Define a velocidade do jogador após sofrer dano.
+        currentSpeed = _PlayerSpeedAfterDamage;
         yield return new WaitForSeconds(duration);
-        _currentSpeed = isDashing ? _DashSpeed : _Speed; // Retorna à velocidade normal após o tempo especificado.
+        currentSpeed = isDashing ? dashSpeed : speed;
     }
 
-    private void Invencible(float seconds)
+    public void Invencible(float seconds)
     {
         CapsuleCollider2D collider2D = GetComponent<CapsuleCollider2D>();
         collider2D.enabled = false;
@@ -137,112 +334,5 @@ private void OnCollisionEnter2D(Collision2D collision)
         collider2D.enabled = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("DashStopper"))
-        {
-            StopDash();
-        }
-
-        if (collision.CompareTag("Escudo")) 
-        {
-            _shield.SetActive(true);
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("Peixe"))
-        {
-            GameController.instance.Damege(-15);
-            Destroy(collision.gameObject);
-            Invencible(2);
-        }
-    }
-
-    private void StopDash()
-    {
-        isDashing = false;
-        _rig.velocity = Vector2.zero;
-        _trail.emitting = false;
-    }
-
-    private IEnumerator Dash(Vector2 direction)
-    {
-        canDash = false;
-        isDashing = true;
-        _trail.emitting = true;
-        _rig.velocity = direction * _DashSpeed;
-        yield return new WaitForSeconds(_dashingCooldown);
-        StopDash();
-        yield return new WaitForSeconds(0.2f);
-        canDash = true;
-    }
-
-    private void DirectionDash()
-    {
-        if (Input.GetKey(KeyCode.LeftControl) && canDash)
-        {
-            Vector2 dashDirection = Vector2.zero;
-
-            if (Input.GetKey(KeyCode.W))
-            {
-                dashDirection = Vector2.up;
-            }
-            else if (Input.GetKey(KeyCode.S))
-            {
-                dashDirection = Vector2.down;
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                dashDirection = Vector2.right;
-            }
-            else if (Input.GetKey(KeyCode.A))
-            {
-                dashDirection = Vector2.left;
-            }
-
-            if (dashDirection != Vector2.zero)
-            {
-                StartCoroutine(Dash(dashDirection));
-            }
-        }
-    }
-
-    private void Move()
-    {
-        if (SceneManager.GetActiveScene().buildIndex != 1)
-        {
-            _horizontal = Input.GetAxis("Horizontal");
-            _vertical = Input.GetAxis("Vertical");
-            _rig.velocity = new Vector3(_horizontal * _currentSpeed, _vertical * _currentSpeed, 0);
-            if (_gun.activeSelf == false)
-            {
-                _gun.SetActive(true);
-            }
-        }
-        else
-        {
-            _gun.SetActive(false);
-        }
-
-        if (Input.GetAxisRaw("Vertical") == 1)
-        {
-            _anim.SetFloat("Dir", 1);
-            _renderer.flipX = false;
-        }
-        else if (Input.GetAxisRaw("Vertical") == -1)
-        {
-            _anim.SetFloat("Dir", 0);
-            _renderer.flipX = false;
-        }
-        else if (Input.GetAxisRaw("Horizontal") == 1)
-        {
-            _anim.SetFloat("Dir", 2);
-            _renderer.flipX = false;
-        }
-        else if (Input.GetAxisRaw("Horizontal") == -1)
-        {
-            _anim.SetFloat("Dir", 2);
-            _renderer.flipX = true;
-        }
-    }
+    #endregion
 }

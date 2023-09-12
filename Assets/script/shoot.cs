@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class shoot : MonoBehaviour
 {
-    [SerializeField] private float _speed; // Velocidade do tiro
+    [SerializeField] private float _speed; // Velocidade da bala
+    [SerializeField] private List<string> validEnemyTags = new List<string>(); // Lista de tags de inimigos válidos
+    [SerializeField] private int damage = 25; // Dano da bala
+
     private void Update()
     {
-        transform.Translate(Vector2.right * _speed * Time.deltaTime); // Movimento do tiro
+        // Move a bala
+        transform.Translate(Vector2.right * _speed * Time.deltaTime);
     }
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Verifique se a bala colidiu com um objeto que deve receber dano (por exemplo, um inimigo)
-        if (other.CompareTag("Enemy"))
+        // Verifique se a tag do objeto colidido está na lista de tags de inimigos válidos
+        if (validEnemyTags.Contains(other.tag))
         {
-            // Obtenha o componente EnemyController do objeto
-            EnemyController enemy = other.GetComponent<EnemyController>();
-
+            // A tag do objeto colidido está na lista, então causa dano ao inimigo (se aplicável)
+            DanoInimigo enemy = other.GetComponent<DanoInimigo>();
             if (enemy != null)
             {
-                // Destrua a bala após causar dano
-                Destroy(gameObject);
+                enemy.TakeDamage(damage);
             }
         }
+
+        // Destrua a bala após causar dano ou colidir com qualquer objeto
+        Destroy(gameObject);
     }
 }

@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 1583271784}
   - component: {fileID: 1583271785}
   - component: {fileID: 1583271791}
+  - component: {fileID: 8581369045275415322}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -339,6 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33e2e2201d022ec439246f5f48453361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _vidaMaxima: 100
   _Speed: 15
   _DashSpeed: 8
   _dashingCooldown: 0.7
@@ -406,6 +408,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0.00000040350656, y: -0.07908594}
   m_Size: {x: 3.220075, y: 3.6313229}
   m_Direction: 0
+--- !u!114 &8581369045275415322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6902456715757067348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0edea7bc322d1ae4e816f160794fa34b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1001 &6902456715693132469
 PrefabInstance:
   m_ObjectHideFlags: 0

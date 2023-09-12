@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4834428270177769050}
   - component: {fileID: 4834428270177769049}
   - component: {fileID: 660032977889043575}
+  - component: {fileID: -6918645553397519928}
   m_Layer: 6
   m_Name: BixoDeNeve
   m_TagString: BixoDeNeve
@@ -122,7 +123,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &4834428270177769049
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -238,3 +239,16 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &-6918645553397519928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4834428270177769053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21bd86747b2b5d84bb454b52deb81998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
