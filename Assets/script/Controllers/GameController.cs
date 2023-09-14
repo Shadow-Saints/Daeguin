@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour
         }
         else if (instance != this)
         {
-            Destroy(instance.gameObject);
+            Destroy(this.gameObject);
         }
     }
 
@@ -49,14 +49,20 @@ public class GameController : MonoBehaviour
         _life = 100;
         _slider.value = _life;
         _recordTimer = PlayerPrefs.GetFloat("Record");
-
-        // Verifique se a cena atual é a cena do jogo (onde o jogador pode perder vida)
         
     }
 
     public void ChangeSkin(int increase)
     {
+
         _Skinindex += increase;
+        if (_Skinindex > 3) 
+        {
+            _Skinindex = 0;
+        }else if(_Skinindex < 0) 
+        {
+            _Skinindex = 3;
+        }
         _playerskin._newSkin = _skin[_Skinindex];
     }
 
@@ -90,12 +96,15 @@ public class GameController : MonoBehaviour
     public void Die()
     {
         // Redefina a vida e o slider
+        _Skinindex = 0;
+        ChangeSkin(0);
         _life = 100;
         _slider.value = _life;
-        _Skinindex = 0;
-        ChangeSkin(_Skinindex);
-
+        _recordTimer = PlayerPrefs.GetFloat("Record");
+        _internalCanvas.SetActive(false);
         ChangeScene(3);
+
+        
     }
 
     private void Timer()
