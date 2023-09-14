@@ -49,5 +49,7 @@ public class Gun : MonoBehaviour
         _mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector2 _viewDirection = _mousePosition - _rig.position;
         _mouseAngle = Mathf.Atan2(_viewDirection.y, _viewDirection.x) * Mathf.Rad2Deg;
+
+        
     }
 }
