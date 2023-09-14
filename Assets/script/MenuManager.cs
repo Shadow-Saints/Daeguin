@@ -11,9 +11,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject _painelControles;
     [SerializeField] private GameObject _painelCreditos;
 
-    public void Jogar()
+    public void Jogar(string name)
     {
-        SceneManager.LoadScene(_nomeDoLevelDeJogo);
+        SceneManager.LoadScene(name);
     }
 
     public void AbrirOpcoes()

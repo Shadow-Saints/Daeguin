@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     #region Variables
 
-private float _horizontal;
-private float _vertical;
+    private float _horizontal;
+    private float _vertical;
 
     [Header("Movement")]
     [SerializeField] private float speed = 5f; // Velocidade padrão de movimento
@@ -34,6 +34,7 @@ private float _vertical;
     private TrailRenderer _trail; // Componente do TrailRenderer
     [SerializeField] private GameObject _gun; // Referência ao objeto de arma
     [SerializeField] private GameObject _shield; // Referência ao objeto de escudo
+    private bool _noDamage;
 
     #endregion
 
@@ -76,6 +77,7 @@ private float _vertical;
 
     if (collision.CompareTag("Escudo"))
     {
+         _noDamage = true;   
         _shield.SetActive(true);
         Destroy(collision.gameObject);
     }
@@ -127,17 +129,24 @@ private float _vertical;
 
     private void Move()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 1)
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
-        _horizontal = Input.GetAxis("Horizontal");
-        _vertical = Input.GetAxis("Vertical");
-        _rig.velocity = new Vector3(_horizontal * currentSpeed, _vertical * currentSpeed, 0);
-        if (_gun.activeSelf == false){
+            _horizontal = Input.GetAxis("Horizontal");
+            _vertical = Input.GetAxis("Vertical");
+            _rig.velocity = new Vector3(_horizontal * currentSpeed, _vertical * currentSpeed, 0);
+        
             _gun.SetActive(true);
-        }else{
+            _renderer.enabled = true;
+            ;
+        }else if (SceneManager.GetActiveScene().buildIndex == 1) 
+        {
             _gun.SetActive(false);
+            _renderer.enabled = true;
         }
-;
+        else
+        {
+            _gun.SetActive(false);
+            _renderer.enabled = false;
         }
 
 
@@ -258,10 +267,18 @@ private float _vertical;
     {
         if (IsEnemyCollision(collision))
         {
-            int damage = GetDamageForEnemy(collision.gameObject.tag);
-            GameController.instance.Damege(damage);
-            TakeDamage(damage);
-            Invencible(1);
+            if (!_noDamage)
+            {
+                int damage = GetDamageForEnemy(collision.gameObject.tag);
+                GameController.instance.Damege(damage);
+                TakeDamage(damage);
+                Destroy(collision.gameObject);
+            }
+            else 
+            {
+                Destroy(collision.gameObject);
+                _noDamage = false;
+            }
         }
     }
 

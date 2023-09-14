@@ -25,9 +25,10 @@ public class shoot : MonoBehaviour
             {
                 enemy.TakeDamage(damage);
             }
+            Destroy(gameObject);
         }
 
         // Destrua a bala após causar dano ou colidir com qualquer objeto
-        Destroy(gameObject);
+        
     }
 }

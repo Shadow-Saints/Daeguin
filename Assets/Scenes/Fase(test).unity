@@ -519,13 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8b4ae315577e445a68faf6fa2947c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagsComVida:
-  - Pedro
-  - Cachorro
-  - Ciclista
-  - BixoDeNeve
-  - NeveQueMorde
-  vidas: 0f0000000b000000080000000f00000014000000
+  vidaMaxima: 100
 --- !u!4 &790717013
 Transform:
   m_ObjectHideFlags: 0
