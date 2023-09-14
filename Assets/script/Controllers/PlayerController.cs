@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Health")]
     [SerializeField] private int maxHealth = 100; // Vida máxima do jogador
-    private int currentHealth; // Vida atual do jogador
+    [SerializeField]private int currentHealth; // Vida atual do jogador
 
     [Header("Components")]
     private Animator _anim; // Componente do Animator
@@ -36,14 +36,32 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _shield; // Referência ao objeto de escudo
     private bool _noDamage;
 
+    public static PlayerController instance;
+
     #endregion
 
     #region Unity Callbacks
 
-    private void Start()
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void Start()
     {
         InitializeComponents();
         InitializeHealth();
+        _noDamage = false;
+
     }
 
     private void Update()
@@ -113,7 +131,10 @@ public class PlayerController : MonoBehaviour
 
     private void HandleInput()
     {
-        DirectionDash();
+        if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            DirectionDash();
+        }
         HandleRunningInput();
     }
 
@@ -203,6 +224,7 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(Dash(dashDirection));
             }
         }
+
     }
 
     private Vector2 GetDashDirection()
@@ -313,6 +335,10 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
+        if (GameController.instance == null)
+        {
+            Debug.LogError("Fudeu");
+        }
 
         if (currentHealth <= 0)
         {
@@ -322,9 +348,18 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject); // Destrua o jogador quando a saúde chegar a zero
+        InitializeComponents();
+        InitializeHealth();
+        _gun.SetActive(false);
         GameController.instance.Die(); // Chama o método Die do GameController
+        currentHealth = maxHealth;
+        _noDamage = false;
+        transform.position = Vector3.zero;
+        _renderer.enabled = false;
+        StopDash();
+        //Destroy(gameObject); // Destrua o jogador quando a saúde chegar a zero
 
+        
     }
 
     #endregion

@@ -28,8 +28,10 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
+        _mainCamera = Camera.main;
         Rotate(); // Chamando a rotação da mira 
         Shoot(); // Chamando a função de atirar 
+        
     }
 
     void Shoot() // Disparo
