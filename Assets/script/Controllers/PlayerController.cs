@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _gun; // Referência ao objeto de arma
     [SerializeField] private GameObject _shield; // Referência ao objeto de escudo
     private bool _noDamage;
+    
 
     public static PlayerController instance;
 
@@ -87,26 +88,27 @@ public class PlayerController : MonoBehaviour
     }
 
     private void HandleTriggerEnter(Collider2D collision)
-{
-    if (collision.gameObject.name == "DashStopper")
     {
-        StopDash();
-    }
+        if (collision.gameObject.name == "DashStopper")
+        {
+            StopDash();
+        }
 
-    if (collision.CompareTag("Escudo"))
-    {
-         _noDamage = true;   
-        _shield.SetActive(true);
-        Destroy(collision.gameObject);
-    }
+        if (collision.CompareTag("Escudo"))
+        {
+            _noDamage = true;   
+            _shield.SetActive(true);
+            Destroy(collision.gameObject);
+        }
 
-    if (collision.CompareTag("Peixe"))
-    {
-        GameController.instance.Damege(-15);
-        Destroy(collision.gameObject);
-        Invencible(2);
+        if (collision.CompareTag("Peixe"))
+        {
+            GameController.instance.Damege(-15);
+            TakeDamage(-15);
+            Destroy(collision.gameObject);
+            Invencible(2);
+        }
     }
-}
 
     #endregion
 
@@ -154,6 +156,7 @@ public class PlayerController : MonoBehaviour
         {
             _horizontal = Input.GetAxis("Horizontal");
             _vertical = Input.GetAxis("Vertical");
+
             _rig.velocity = new Vector3(_horizontal * currentSpeed, _vertical * currentSpeed, 0);
         
             _gun.SetActive(true);
