@@ -91,12 +91,12 @@ public class GameController : MonoBehaviour
     {
 
         _Skinindex += increase;
-        if (_Skinindex > 3) 
+        if (_Skinindex > 4) 
         {
             _Skinindex = 0;
         }else if(_Skinindex < 0) 
         {
-            _Skinindex = 3;
+            _Skinindex = 4;
         }
         _playerskin._newSkin = _skin[_Skinindex];
     }
@@ -137,7 +137,7 @@ public class GameController : MonoBehaviour
     public void ChangeScene(int lvl)
     {
         SceneManager.LoadScene(lvl);
-        if (lvl == 2)
+        if (lvl == 2 || lvl == 3)
         {
             _internalCanvas.SetActive(true);
         }

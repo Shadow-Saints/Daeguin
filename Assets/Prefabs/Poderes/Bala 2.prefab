@@ -108,6 +108,7 @@ MonoBehaviour:
   - Ciclista
   - BixoDeNeve
   - Pelicano
+  - Polvo
   damage: 50
   _renderer: {fileID: 1944618065994142727}
 --- !u!61 &6226372085236068101

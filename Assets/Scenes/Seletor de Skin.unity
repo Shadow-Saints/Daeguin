@@ -169,6 +169,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0dfa1438d859e774080e1cbd4b5c13e8, type: 2}
   - {fileID: 11400000, guid: 1c5400ac3094c2442a5df2bc3487b27a, type: 2}
   - {fileID: 11400000, guid: b6909b8d558bf1e47bc2669b8d584c1d, type: 2}
+  - {fileID: 11400000, guid: 5a3ca0e5d6c8fca4990504d87f22d47a, type: 2}
   _playerskin: {fileID: 1583271780}
   _life: 0
   _slider: {fileID: 1338176610}

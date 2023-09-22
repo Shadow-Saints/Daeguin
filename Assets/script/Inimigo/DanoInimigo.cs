@@ -18,7 +18,7 @@ public class DanoInimigo : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Tiro")) 
         {
-            //currentHealth -= 25;
+            currentHealth -= 25;
             Debug.Log(this.gameObject.name + currentHealth.ToString());
         }
     }

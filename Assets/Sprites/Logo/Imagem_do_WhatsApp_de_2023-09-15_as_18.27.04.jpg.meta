@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 674fa94db5dff804882cd7a51ca3bdd9
+guid: cf16be52b94a0424eb8a2dcf8d58218b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 24
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -129,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fantas1_1_0
+      name: Imagem_do_WhatsApp_de_2023-09-15_as_18.27.04_0
       rect:
         serializedVersion: 2
-        x: 105
-        y: 65
-        width: 89
-        height: 137
+        x: 34
+        y: 338
+        width: 373
+        height: 258
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea5102dcb917eec4cb6c998ccea8997d
-      internalID: -171901763
+      spriteID: 70eda2a75116ded42ba915a2beacc246
+      internalID: -2051320033
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fantas1_1_1
+      name: Imagem_do_WhatsApp_de_2023-09-15_as_18.27.04_1
       rect:
         serializedVersion: 2
-        x: 405
-        y: 72
-        width: 89
-        height: 130
+        x: 31
+        y: 24
+        width: 376
+        height: 268
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,155 +164,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 805432012f209b74e83a3748ba8a3156
-      internalID: 1882542087
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fantas1_1_2
-      rect:
-        serializedVersion: 2
-        x: 706
-        y: 86
-        width: 88
-        height: 116
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f68c7e4fb2ad32b4fa29f3c98c10d3e5
-      internalID: -650099373
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fantas1_1_3
-      rect:
-        serializedVersion: 2
-        x: 1005
-        y: 72
-        width: 90
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2852798b7bde01245b67b13afc497a2d
-      internalID: 1781058179
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fantas1_1_4
-      rect:
-        serializedVersion: 2
-        x: 1306
-        y: 59
-        width: 103
-        height: 143
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7c41be4246fb4d946b1aed1c62f22662
-      internalID: 372269991
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fantas1_1_5
-      rect:
-        serializedVersion: 2
-        x: 1605
-        y: 72
-        width: 116
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bae47c1f7b48038429a7693fed3d2b22
-      internalID: 749798140
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fantas1_1_6
-      rect:
-        serializedVersion: 2
-        x: 1878
-        y: 91
-        width: 136
-        height: 123
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 23b10f432d436054497d21d7a3bbf945
-      internalID: -200039482
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fantas1_1_7
-      rect:
-        serializedVersion: 2
-        x: 2159
-        y: 72
-        width: 170
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 85bd70944caa6de4f8983f5338616aad
-      internalID: -1964764380
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fantas1_1_8
-      rect:
-        serializedVersion: 2
-        x: 2499
-        y: 59
-        width: 103
-        height: 143
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c35b40305867f57488bcee2d4b56d75f
-      internalID: -813865235
+      spriteID: 2433355593df73240abce94ad11107a0
+      internalID: -290982042
       vertices: []
       indices: 
       edges: []
@@ -328,15 +181,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      fantas1_1_0: -171901763
-      fantas1_1_1: 1882542087
-      fantas1_1_2: -650099373
-      fantas1_1_3: 1781058179
-      fantas1_1_4: 372269991
-      fantas1_1_5: 749798140
-      fantas1_1_6: -200039482
-      fantas1_1_7: -1964764380
-      fantas1_1_8: -813865235
+      Imagem_do_WhatsApp_de_2023-09-15_as_18.27.04_0: -2051320033
+      Imagem_do_WhatsApp_de_2023-09-15_as_18.27.04_1: -290982042
+      Imagem_do_WhatsApp_de_2023-09-15_as_18.27.04_2: -252632877
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

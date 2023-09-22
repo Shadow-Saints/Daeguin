@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 674fa94db5dff804882cd7a51ca3bdd9
+guid: 67c98ae0d4b92724c89fa36aeb6f190a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 24
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -129,54 +129,33 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fantas1_1_0
+      name: PistolaAndaT_0
       rect:
         serializedVersion: 2
-        x: 105
-        y: 65
-        width: 89
-        height: 137
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ea5102dcb917eec4cb6c998ccea8997d
-      internalID: -171901763
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fantas1_1_1
-      rect:
-        serializedVersion: 2
-        x: 405
-        y: 72
-        width: 89
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 805432012f209b74e83a3748ba8a3156
-      internalID: 1882542087
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fantas1_1_2
-      rect:
-        serializedVersion: 2
-        x: 706
+        x: 92
         y: 86
-        width: 88
+        width: 116
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6c47c07ac5572741be400c1d39c5ae4
+      internalID: 1270546008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistolaAndaT_1
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 92
+        width: 115
         height: 116
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -185,62 +164,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f68c7e4fb2ad32b4fa29f3c98c10d3e5
-      internalID: -650099373
+      spriteID: 8e0ad1684c108714b9d83973faff46a8
+      internalID: -798495628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fantas1_1_3
+      name: PistolaAndaT_2
       rect:
         serializedVersion: 2
-        x: 1005
-        y: 72
-        width: 90
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2852798b7bde01245b67b13afc497a2d
-      internalID: 1781058179
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fantas1_1_4
-      rect:
-        serializedVersion: 2
-        x: 1306
-        y: 59
-        width: 103
-        height: 143
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7c41be4246fb4d946b1aed1c62f22662
-      internalID: 372269991
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fantas1_1_5
-      rect:
-        serializedVersion: 2
-        x: 1605
-        y: 72
+        x: 692
+        y: 99
         width: 116
-        height: 130
+        height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -248,20 +185,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bae47c1f7b48038429a7693fed3d2b22
-      internalID: 749798140
+      spriteID: 751a48756b1863a44bf3944a0df7ddcb
+      internalID: -2053323655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fantas1_1_6
+      name: PistolaAndaT_3
       rect:
         serializedVersion: 2
-        x: 1878
-        y: 91
-        width: 136
-        height: 123
+        x: 993
+        y: 92
+        width: 114
+        height: 116
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -269,20 +206,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23b10f432d436054497d21d7a3bbf945
-      internalID: -200039482
+      spriteID: 2e7a55ac226a07a40962b5a9228362f7
+      internalID: -830138134
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fantas1_1_7
+      name: PistolaAndaT_4
       rect:
         serializedVersion: 2
-        x: 2159
-        y: 72
-        width: 170
-        height: 130
+        x: 1292
+        y: 86
+        width: 116
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -290,20 +227,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85bd70944caa6de4f8983f5338616aad
-      internalID: -1964764380
+      spriteID: b3203183b50fd7f479ca09f81d37dc94
+      internalID: -362588106
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fantas1_1_8
+      name: PistolaAndaT_5
       rect:
         serializedVersion: 2
-        x: 2499
-        y: 59
-        width: 103
-        height: 143
+        x: 1592
+        y: 92
+        width: 115
+        height: 122
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -311,8 +248,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c35b40305867f57488bcee2d4b56d75f
-      internalID: -813865235
+      spriteID: 2a0c1b7b81201b34abaa4c55eb22951b
+      internalID: -1989954114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistolaAndaT_6
+      rect:
+        serializedVersion: 2
+        x: 1892
+        y: 99
+        width: 116
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bbac39ad4abb6043b265129d57797f6
+      internalID: 951123184
       vertices: []
       indices: 
       edges: []
@@ -328,15 +286,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      fantas1_1_0: -171901763
-      fantas1_1_1: 1882542087
-      fantas1_1_2: -650099373
-      fantas1_1_3: 1781058179
-      fantas1_1_4: 372269991
-      fantas1_1_5: 749798140
-      fantas1_1_6: -200039482
-      fantas1_1_7: -1964764380
-      fantas1_1_8: -813865235
+      PistolaAndaT_0: 1270546008
+      PistolaAndaT_1: -798495628
+      PistolaAndaT_2: -2053323655
+      PistolaAndaT_3: -830138134
+      PistolaAndaT_4: -362588106
+      PistolaAndaT_5: -1989954114
+      PistolaAndaT_6: 951123184
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

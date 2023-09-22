@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleInput()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 2)
+        if (SceneManager.GetActiveScene().buildIndex == 2 || SceneManager.GetActiveScene().buildIndex == 3)
         {
             DirectionDash();
         }
@@ -233,7 +233,7 @@ public class PlayerController : MonoBehaviour
 
     private void DirectionDash()
     {
-        if (Input.GetKey(KeyCode.LeftControl) && canDash)
+        if (Input.GetKey(KeyCode.Q) && canDash)
         {
             Vector2 dashDirection = GetDashDirection();
             if (dashDirection != Vector2.zero)
