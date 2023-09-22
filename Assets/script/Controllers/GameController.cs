@@ -28,7 +28,10 @@ public class GameController : MonoBehaviour
 
     [Header("Timer")]
     private float _timerSec;
-    private float _timerMins;
+
+    private bool _lvl2;
+
+    [SerializeField] private float _timerMins;
 
     private float _recordTimer;
     private float _totalTimer;
@@ -72,9 +75,10 @@ public class GameController : MonoBehaviour
             _timerMins = 0;
         }
 
-        if(_timerMins >= 15)
+        if(_timerMins >= 15 && !_lvl2)
         {
             ChangeScene(3);
+            _lvl2 = true;
         }
 
     }
