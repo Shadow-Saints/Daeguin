@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _gun; // Referência ao objeto de arma
     [SerializeField] private GameObject _shield; // Referência ao objeto de escudo
     private bool _noDamage;
-    
+    [SerializeField]private Gun _arma;
 
     public static PlayerController instance;
 
@@ -108,6 +108,20 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             Invencible(2);
         }
+
+        if(_arma == null) { Debug.LogError("CARAI"); }
+
+        if (collision.CompareTag("Fogo")) 
+        {
+            _arma.Index = 1;
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.CompareTag("Vento"))
+        {
+            _arma.Index = 2;
+            Destroy(collision.gameObject);
+        }
     }
 
     #endregion
@@ -133,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleInput()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 3)
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             DirectionDash();
         }
@@ -313,7 +327,8 @@ public class PlayerController : MonoBehaviour
             || collision.gameObject.CompareTag("Cachoro")
             || collision.gameObject.CompareTag("NeveQueMorde")
             || collision.gameObject.CompareTag("Ciclista")
-            || collision.gameObject.CompareTag("BixoDeNeve");
+            || collision.gameObject.CompareTag("BixoDeNeve")
+            || collision.gameObject.CompareTag("Pelicano");
     }
 
     private int GetDamageForEnemy(string enemyTag)
@@ -324,9 +339,13 @@ public class PlayerController : MonoBehaviour
                 return 10;
             case "Cachoro":
                 return 15;
+            case "Pelicano":
+                return 15;
             case "NeveQueMorde":
                 return 20;
             case "Ciclista":
+                return 15;
+            case "Polvo":
                 return 15;
             case "BixoDeNeve":
                 return 5;

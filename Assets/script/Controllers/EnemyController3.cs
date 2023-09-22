@@ -5,6 +5,7 @@ public class EnemyController3 : MonoBehaviour
     private Rigidbody2D _rig;
 
     private SpriteRenderer _renderer;
+    private Animator _anim;
 
     void Go()
     {
@@ -23,7 +24,17 @@ public class EnemyController3 : MonoBehaviour
     {
         _renderer = GetComponent<SpriteRenderer>();
         _rig = GetComponent<Rigidbody2D>();
+        _anim = GetComponent<Animator>();
         Invoke(nameof(Go), 2);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if ((gameObject.CompareTag("Pelicano")|| gameObject.CompareTag("Polvo")) && collision.gameObject.CompareTag("Atack"))
+        {
+            _anim.SetBool("Atack", true);
+            Invoke(nameof(StopAtack), 1);
+        }
     }
 
     private void Update()
@@ -45,6 +56,11 @@ public class EnemyController3 : MonoBehaviour
         {
             _renderer.flipX = true;
         }
+    }
+
+    private void StopAtack() 
+    {
+        _anim.SetBool("Atack", false);
     }
 
 }

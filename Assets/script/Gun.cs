@@ -9,7 +9,7 @@ public class Gun : MonoBehaviour
     private Vector2 _mousePosition; // Posição do Mouse
 
     [SerializeField]
-    private GameObject _shoot; // Objeto do tiro
+    private GameObject[] _shoot; // Objeto do tiro
 
     [SerializeField]
     private float _shootDelay; // Delay do tiro
@@ -20,6 +20,7 @@ public class Gun : MonoBehaviour
 
     private float _mouseAngle; // Angulo de posição do mouse em relação ao Player
 
+    public int Index;
 
     private void OnEnable()
     {
@@ -38,7 +39,7 @@ public class Gun : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && _timer > _shootDelay)
         {
-            GameObject newShoot = Instantiate(_shoot); // Instanciando o projétil
+            GameObject newShoot = Instantiate(_shoot[Index]); // Instanciando o projétil
             newShoot.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0, 0, _mouseAngle)); // posicionando o projétil
             _timer = 0;
         }

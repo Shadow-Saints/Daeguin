@@ -2888,7 +2888,7 @@ MonoBehaviour:
   - {fileID: 4834428270177769053, guid: 020cc8ae3aa118748aec4dd43dc69dbe, type: 3}
   - {fileID: 6809715654317690040, guid: 52c48c09e0a33b54b9809b493ac8930e, type: 3}
   - {fileID: 2074731177561996757, guid: 87138a021f300c146b6f3bd365ba76e0, type: 3}
-  spawnInterval: 3
+  spawnInterval: 2
   spawnPoints:
   - {fileID: 1862882541}
   - {fileID: 1425192282}

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class EnemyController02 : MonoBehaviour
@@ -7,12 +8,14 @@ public class EnemyController02 : MonoBehaviour
     private Vector3 _direction;
 
     private SpriteRenderer _render;
+    private Animator _anim;
 
     void Start()
     {
         // Encontre a transformação do jogador
         _target = GameObject.FindGameObjectWithTag("Player").transform;
         _render = GetComponent<SpriteRenderer>();
+        _anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -30,6 +33,14 @@ public class EnemyController02 : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (gameObject.CompareTag("Pedro") && collision.gameObject.CompareTag("Atack"))
+        {
+            _anim.SetBool("Atack", true);
+            Invoke(nameof(StopAtack), 1);
+        }
+    }
     private void Animation()
     {
         if (_direction.x < 0)
@@ -41,4 +52,10 @@ public class EnemyController02 : MonoBehaviour
             _render.flipX = false;
         }
     }
+
+    private void StopAtack() 
+    {
+        _anim.SetBool("Atack", false);
+    }
+
 }

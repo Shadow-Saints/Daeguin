@@ -6,27 +6,36 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private int _Skinindex;
+    #region Variables
     public static GameController instance;
+
+    [Header("Skin")]
+    [SerializeField] private int _Skinindex;
     [SerializeField]
     private SeletorDeSkin[] _skin;
     [SerializeField]
     private PlayerSkin _playerskin;
     [SerializeField]
+
+    [Header("Life")]
     private float _life;
+    [Header("Internal Canvas")]
     [SerializeField]
     private Slider _slider;
     [SerializeField]
     private GameObject _internalCanvas;
-
     [SerializeField] private TextMeshProUGUI _timerText;
 
+    [Header("Timer")]
     private float _timerSec;
     private float _timerMins;
 
     private float _recordTimer;
     private float _totalTimer;
 
+    #endregion
+
+    #region Unity Callbacks
 
     private void Awake()
     {
@@ -51,6 +60,28 @@ public class GameController : MonoBehaviour
         _recordTimer = PlayerPrefs.GetFloat("Record");
         
     }
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 2 || SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            Timer();
+        }
+        else
+        {
+            _timerSec = 0;
+            _timerMins = 0;
+        }
+
+        if(_timerMins >= 15)
+        {
+            ChangeScene(3);
+        }
+
+    }
+
+    #endregion
+
+    #region Skins
 
     public void ChangeSkin(int increase)
     {
@@ -66,6 +97,9 @@ public class GameController : MonoBehaviour
         _playerskin._newSkin = _skin[_Skinindex];
     }
 
+    #endregion
+
+    #region Life and Damege
     public void Damege(int damege)
     {
         if (_life <= 100)
@@ -79,7 +113,23 @@ public class GameController : MonoBehaviour
             _life = 100;
         }
     }
+    public void Die()
+    {
+        // Redefina a vida e o slider
+        _Skinindex = 0;
+        ChangeSkin(0);
+        _life = 100;
+        _slider.value = _life;
+        _recordTimer = PlayerPrefs.GetFloat("Record");
+        _internalCanvas.SetActive(false);
+        ChangeScene(4);
 
+
+    }
+
+    #endregion
+
+    #region Scene Manegement
     public void ChangeScene(int lvl)
     {
         SceneManager.LoadScene(lvl);
@@ -93,19 +143,9 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void Die()
-    {
-        // Redefina a vida e o slider
-        _Skinindex = 0;
-        ChangeSkin(0);
-        _life = 100;
-        _slider.value = _life;
-        _recordTimer = PlayerPrefs.GetFloat("Record");
-        _internalCanvas.SetActive(false);
-        ChangeScene(3);
+    #endregion
 
-        
-    }
+    #region Timer
 
     private void Timer()
     {
@@ -130,16 +170,6 @@ public class GameController : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        if (SceneManager.GetActiveScene().buildIndex == 2)
-        {
-            Timer();
-        }
-        else
-        {
-            _timerSec = 0;
-            _timerMins = 0;
-        }
-    }
+    #endregion
+
 }
