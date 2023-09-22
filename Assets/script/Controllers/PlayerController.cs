@@ -328,7 +328,8 @@ public class PlayerController : MonoBehaviour
             || collision.gameObject.CompareTag("NeveQueMorde")
             || collision.gameObject.CompareTag("Ciclista")
             || collision.gameObject.CompareTag("BixoDeNeve")
-            || collision.gameObject.CompareTag("Pelicano");
+            || collision.gameObject.CompareTag("Pelicano")
+            || collision.gameObject.CompareTag("Polvo");
     }
 
     private int GetDamageForEnemy(string enemyTag)

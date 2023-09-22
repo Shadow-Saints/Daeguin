@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8301505950398261805}
   - component: {fileID: -3718294474960212221}
   - component: {fileID: 1081319613434414251}
-  - component: {fileID: 4697247529470277501}
+  - component: {fileID: 7744007300924199833}
   m_Layer: 6
   m_Name: Polvo
   m_TagString: Polvo
@@ -151,7 +151,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2.98, y: 1.92}
   m_Direction: 1
---- !u!95 &4697247529470277501
+--- !u!95 &7744007300924199833
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0

@@ -108,8 +108,8 @@ MonoBehaviour:
   - Ciclista
   - BixoDeNeve
   - Pelicano
+  - Polvo
   damage: 15
-  _aaa: {fileID: 2084751835189237312}
   _renderer: {fileID: 1944618065994142727}
 --- !u!61 &6226372085236068101
 BoxCollider2D:

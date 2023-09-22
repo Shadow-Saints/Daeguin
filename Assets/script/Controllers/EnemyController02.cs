@@ -35,7 +35,7 @@ public class EnemyController02 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (gameObject.CompareTag("Pedro") && collision.gameObject.CompareTag("Atack"))
+        if ((gameObject.CompareTag("Pedro") || gameObject.CompareTag("NeveQueMorde")) && collision.gameObject.CompareTag("Atack"))
         {
             _anim.SetBool("Atack", true);
             Invoke(nameof(StopAtack), 1);

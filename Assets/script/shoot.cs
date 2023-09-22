@@ -25,6 +25,10 @@ public class shoot : MonoBehaviour
             _renderer.flipY = true;
             _fliped = true;
         }
+        else
+        {
+            _renderer.flipY = false;
+        }
     }
 
 
