@@ -67,12 +67,13 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        HandleInput();
+        
         UpdateGunPosition();
     }
 
     private void FixedUpdate()
     {
+        HandleInput();
         Move();
         HandleDash();
     }
@@ -106,7 +107,6 @@ public class PlayerController : MonoBehaviour
             GameController.instance.Damege(-15);
             TakeDamage(-15);
             Destroy(collision.gameObject);
-            Invencible(2);
         }
 
         if(_arma == null) { Debug.LogError("CARAI"); }
@@ -395,19 +395,5 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(duration);
         currentSpeed = isDashing ? dashSpeed : speed;
     }
-
-    public void Invencible(float seconds)
-    {
-        CapsuleCollider2D collider2D = GetComponent<CapsuleCollider2D>();
-        collider2D.enabled = false;
-        Invoke(nameof(Tangible), seconds);
-    }
-
-    private void Tangible()
-    {
-        CapsuleCollider2D collider2D = GetComponent<CapsuleCollider2D>();
-        collider2D.enabled = true;
-    }
-
     #endregion
 }

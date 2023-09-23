@@ -408,7 +408,7 @@ MonoBehaviour:
   currentHealth: 0
   _gun: {fileID: 5733710098933408997}
   _shield: {fileID: 342663588}
-  _arma: {fileID: 0}
+  _arma: {fileID: 5733710098933408999}
 --- !u!50 &1583271784
 Rigidbody2D:
   serializedVersion: 4
@@ -426,8 +426,8 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
+  m_Interpolate: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &1583271791
@@ -507,6 +507,18 @@ PrefabInstance:
       propertyPath: _shootDelay
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 1177771821174943314, guid: 572ac4f99704dc64095c103f12c43319, type: 3}
+      propertyPath: _shoot.Array.data[0]
+      value: 
+      objectReference: {fileID: 6034126806922475157, guid: c3a3409f1382acf46965b04f2a11fbbc, type: 3}
+    - target: {fileID: 1177771821174943314, guid: 572ac4f99704dc64095c103f12c43319, type: 3}
+      propertyPath: _shoot.Array.data[1]
+      value: 
+      objectReference: {fileID: 6034126806922475157, guid: 36dd57a7f7a927b449035927d9a1e275, type: 3}
+    - target: {fileID: 1177771821174943314, guid: 572ac4f99704dc64095c103f12c43319, type: 3}
+      propertyPath: _shoot.Array.data[2]
+      value: 
+      objectReference: {fileID: 6034126806922475157, guid: 66eaa604ee2cb3748a7270f0c92da636, type: 3}
     - target: {fileID: 1177771821174943315, guid: 572ac4f99704dc64095c103f12c43319, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -563,3 +575,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1177771821174943315, guid: 572ac4f99704dc64095c103f12c43319, type: 3}
   m_PrefabInstance: {fileID: 6902456715693132469}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5733710098933408999 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1177771821174943314, guid: 572ac4f99704dc64095c103f12c43319, type: 3}
+  m_PrefabInstance: {fileID: 6902456715693132469}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5733710098933408997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1808632547c72af44a1d008d855ae468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

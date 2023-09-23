@@ -38,6 +38,7 @@ public class GameController : MonoBehaviour
 
     [Header("Pause")]
     [SerializeField]private GameObject _menuPause;
+    [SerializeField] private Slider _sliderPause;
 
     #endregion
 
