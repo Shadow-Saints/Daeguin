@@ -17684,7 +17684,7 @@ MonoBehaviour:
   - {fileID: 4879112466527192876, guid: 0ba839617488551469ea2f50a995d946, type: 3}
   - {fileID: 4834428270177769053, guid: 020cc8ae3aa118748aec4dd43dc69dbe, type: 3}
   - {fileID: 4834428270177769053, guid: 020cc8ae3aa118748aec4dd43dc69dbe, type: 3}
-  spawnInterval: 3
+  spawnInterval: 5
   spawnPoints:
   - {fileID: 507457010}
   - {fileID: 1508408956}
