@@ -305,7 +305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -119}
+  m_AnchoredPosition: {x: 0, y: -188}
   m_SizeDelta: {x: 700, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &175229560
@@ -591,14 +591,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: d0388664754fae94d80d71cf84e3b1a7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1001,7 +1001,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -230, y: 202}
+  m_AnchoredPosition: {x: -130, y: 175}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &585189462
@@ -1318,7 +1318,7 @@ RectTransform:
   m_Children:
   - {fileID: 1706340709}
   m_Father: {fileID: 1401945330}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2493,7 +2493,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
+  m_AnchoredPosition: {x: -4.9999695, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1312352361
@@ -2902,8 +2902,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Diretor Criativo:\nPedro Lino n\xB0: 24 PJD:2BM\n\nProgramador Chefe:
-    \nHenrique Costa n\xB0: 15 PJD:2BM\n\nProgramador:\nKayke Ricarti \rn\xB0:                           
-    21 PJD:2BM\n\r\nDesigner Chefe: \nPedro Henrique n\xB0: 25 PJD:2BM\n\nDesigner:\nSarah
+    \nHenrique Costa n\xB0: 15 PJD:2BM\n\nProgramador:\nKaykeRicarti \r                                    
+    n\xB0: 21 PJD:2BM\n\r\nDesigner Chefe: \nPedro Henrique n\xB0: 25 PJD:2BM\n\nDesigner:\nSarah
     Vieira\r                                n\xB0: 28 PJD:2BM\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9196c7377fec0774dbf20cf48fee92ba, type: 2}
@@ -3248,7 +3248,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -387}
+  m_AnchoredPosition: {x: 0, y: -250}
   m_SizeDelta: {x: 171.606, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1628071485
@@ -3803,8 +3803,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 121}
-  m_SizeDelta: {x: 650, y: 100}
+  m_AnchoredPosition: {x: 1.674, y: 121}
+  m_SizeDelta: {x: 459.145, y: 70.637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2089358897
 MonoBehaviour:
