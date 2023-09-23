@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Praia/1.unity
     guid: 2cb9fb7a3a30945418d3d9016e7e6cca
   - enabled: 1
+    path: Assets/Scenes/Praia/2.unity
+    guid: 3e458c54234ec634e8ea7071cce3f690
+  - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: ef6eb6026188b7d46999d7a7c8879636
   m_configObjects: {}

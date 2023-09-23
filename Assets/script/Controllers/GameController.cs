@@ -36,6 +36,9 @@ public class GameController : MonoBehaviour
     private float _recordTimer;
     private float _totalTimer;
 
+    [Header("Pause")]
+    [SerializeField]private GameObject _menuPause;
+
     #endregion
 
     #region Unity Callbacks
@@ -79,6 +82,14 @@ public class GameController : MonoBehaviour
         {
             ChangeScene(3);
             _lvl2 = true;
+        }
+
+        if (SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1 || SceneManager.GetActiveScene().buildIndex != 4) 
+        {
+            if (Input.GetKeyDown(KeyCode.Backspace)) 
+            {
+                Pause();
+            }
         }
 
     }
@@ -172,6 +183,22 @@ public class GameController : MonoBehaviour
 
         
 
+    }
+
+    #endregion
+
+    #region Pause
+
+    public void Pause() 
+    {
+        Time.timeScale = 0;
+        _menuPause.SetActive(true);
+    }
+
+    public void Resume() 
+    {
+        _menuPause.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     #endregion

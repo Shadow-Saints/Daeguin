@@ -17,6 +17,12 @@ TagManager:
   - Peixe
   - Escudo
   - Life Bar
+  - Tiro
+  - Atack
+  - Pelicano
+  - Fogo
+  - Vento
+  - Polvo
   layers:
   - Default
   - TransparentFX
@@ -25,7 +31,7 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - 
+  - Barrier
   - 
   - 
   - 

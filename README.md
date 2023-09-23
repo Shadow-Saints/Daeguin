@@ -1,39 +1,31 @@
 # Deaguin
 
-Um jogo roguelike 2D de geração procedural
-onde você é um pinguim que se perdeu de uma
+Um jogo Endeless onde você é um pinguim que se perdeu de uma
 geleira que se partiu e está tentando retornar para casa.
 
 ## Fases
 
- O jogo contém 3 fases sendo, praia, cidade e geleira
+ O jogo contém 2 fases sendo, praia e geleira
 
 ### fases prontas
 
 - [x] Praia
-- [ ] Cidade
-- [ ]  Geleira
+- [x]  Geleira
 
 ### Inimigos
 
-#### Praia
-
-- [ ] Fotografo
-- [x] Segurador
-- [ ] Cachoro
-
-#### Cidade
-
-- [ ] Ciclista
-
-#### Geleira
-
-- [ ] Urso Polar
+- [x] Bola de neve
+- [x] Polvo
+- [x] Espirito das Neves
+- [x] Perseguidor
+- [x] Pelicano
 
 #### Mecanicas Implementadas
 
 - [x] Movimentação
 - [x] Troca de Skins
-- [x] Tiro
-- [ ] Dash
-- [ ] Corrida
+- [x] Tiro de Gelo
+- [x] Tiro de Ar
+- [x] Tiro de Fogo
+- [x] Dash
+- [x] Corrida
